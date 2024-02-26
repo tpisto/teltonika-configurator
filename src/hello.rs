@@ -1,4 +1,5 @@
 use std::borrow::Cow;
+use std::sync::{Arc, Mutex};
 
 use gpui::*;
 use quick_xml::events::Event;
@@ -7,14 +8,14 @@ use quick_xml::reader::Reader;
 
 pub struct HelloWorld {
     pub text: SharedString,
-    pub root_component: Component,
+    pub root_component: Arc<Mutex<Component>>,
 }
 
 impl HelloWorld {
-    pub fn new() -> Self {
+    pub fn new(xml: String) -> Self {
         Self {
             text: "Hello, World!".into(),
-            root_component: parse_component(),
+            root_component: Arc::new(Mutex::new(parse_component(xml))),
         }
     }
 }
@@ -27,20 +28,8 @@ pub struct Component {
     pub children: Vec<Component>,
 }
 
-fn parse_component() -> Component {
-    let xml = r##"
-        <div flex size_full>
-            <div flex size_full bg="#0000ff">                
-                <div flex size_full bg="#ff00ff" justify-center>Moikka</div>
-            </div>
-            <div flex size_full bg="#ff0000" />
-            <div flex size_full bg="#00ff00">
-                <div />
-            </div>                
-        </div>
-    "##;
-
-    let mut reader = Reader::from_str(xml);
+pub fn parse_component(xml: String) -> Component {
+    let mut reader = Reader::from_str(xml.as_str());
     reader
         .expand_empty_elements(true)
         .check_end_names(true)
@@ -121,10 +110,12 @@ fn parse_component() -> Component {
 
 impl Render for HelloWorld {
     fn render(&mut self, cx: &mut ViewContext<Self>) -> impl IntoElement {
-        println!("Rendering HelloWorld: {:#?}", self.root_component);
+        let root_lock = self.root_component.lock().unwrap();
+        // Now, the locked root component can be used safely within this scope
+        println!("Rendering HelloWorld: {:#?}", *root_lock);
 
-        // Go through the component tree and create the div elements
-        render_component(&self.root_component)
+        // Pass a reference to the locked component to render_component
+        render_component(&*root_lock)
     }
 }
 

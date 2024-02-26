@@ -1,0 +1,10 @@
+<div flex size_full>
+  <div flex size_full bg="#0000ff">
+    <div flex size_full bg="#ff00ff" justify-center>Moikka</div>
+  </div>
+  <div flex size_full bg="#ff0000" />
+  <div flex size_full bg="#00ffff">
+    <div />
+    <div />
+  </div>
+</div>

@@ -1,0 +1,1 @@
+cargo watch --ignore 'ui' -x run
