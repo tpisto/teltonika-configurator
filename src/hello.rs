@@ -1,164 +1,117 @@
-use std::borrow::Cow;
-use std::sync::{Arc, Mutex};
-
 use gpui::*;
-use quick_xml::events::Event;
-use quick_xml::name::QName;
-use quick_xml::reader::Reader;
+
+use futures::{
+    channel::mpsc::{channel, Receiver},
+    SinkExt, StreamExt,
+};
+use notify::{Config, Event, EventKind, RecommendedWatcher, RecursiveMode, Watcher};
+use std::{fs::File, sync::{Arc, Mutex}};
+use std::{borrow::Cow, io::Read};
+
+use crate::component_tree::*;
+
+pub enum FileChangeEvent {
+    DataChange,
+}
+impl EventEmitter<FileChangeEvent> for HelloWorld {}
 
 pub struct HelloWorld {
     pub text: SharedString,
-    pub root_component: Arc<Mutex<Component>>,
+    pub root_component: crate::component_tree::Component,
 }
 
 impl HelloWorld {
-    pub fn new(xml: String) -> Self {
-        Self {
+    pub fn new(cx: &mut WindowContext) -> View<Self> {
+        let xml = HelloWorld::read_xml_file();
+        let this = Self {
             text: "Hello, World!".into(),
-            root_component: Arc::new(Mutex::new(parse_component(xml))),
-        }
-    }
-}
+            root_component: parse_component(xml),
+        };
 
-#[derive(Debug)]
-pub struct Component {
-    pub elem: String,
-    pub text: Option<String>,
-    pub attributes: Vec<(String, String)>,
-    pub children: Vec<Component>,
-}
+        let view = cx.new_view(|_cx| this);
 
-pub fn parse_component(xml: String) -> Component {
-    let mut reader = Reader::from_str(xml.as_str());
-    reader
-        .expand_empty_elements(true)
-        .check_end_names(true)
-        .trim_text(true);
-
-    let mut buf = Vec::new();
-    let mut stack: Vec<Component> = Vec::new();
-
-    loop {
-        match reader.read_event_into(&mut buf) {
-            Ok(Event::Eof) => break,
-            Ok(event) => match event {
-                Event::Start(ref e) | Event::Empty(ref e) => {
-                    let elem_name = String::from_utf8(e.local_name().as_ref().to_vec()).unwrap();
-                    let attributes = e
-                        .html_attributes()
-                        .map(|a| {
-                            if let Ok(a) = a {
-                                (
-                                    String::from_utf8(a.key.local_name().as_ref().to_vec())
-                                        .unwrap(),
-                                    a.decode_and_unescape_value(&reader).unwrap().into_owned(),
-                                )
-                            } else {
-                                // println!("Attributes are: {:?}", e.attributes());
-                                // panic!("Error reading attribute");
-                                ("error".to_string(), "error".to_string())
-                            }
-                        })
-                        .collect::<Vec<(String, String)>>();
-
-                    let component = Component {
-                        elem: elem_name,
-                        text: None,
-                        attributes,
-                        children: Vec::new(),
-                    };
-
-                    if let Event::Empty(_) = event {
-                        // For Event::Empty, add directly to the parent if exists
-                        if let Some(parent) = stack.last_mut() {
-                            parent.children.push(component);
-                        }
-                    } else {
-                        // For Event::Start, push onto the stack for potential nesting
-                        stack.push(component);
-                    }
+        // Listen for file change events. Now file change are triggered on this view, but later
+        // we can move the file listener to somewhere else
+        cx.subscribe(
+            &view,
+            |subscriber, emitter: &FileChangeEvent, cx| match emitter {
+                FileChangeEvent::DataChange => {
+                    subscriber.update(cx, |this, cx| {
+                        this.root_component = parse_component(HelloWorld::read_xml_file());
+                        cx.notify();
+                    });
                 }
-                Event::End(_) => {
-                    if stack.len() > 1 {
-                        let finished_component = stack.pop().unwrap();
-                        if let Some(parent) = stack.last_mut() {
-                            parent.children.push(finished_component);
-                        }
-                    }
-                }
-                Event::Text(e) => {
-                    let text = e.unescape().unwrap();
-                    if let Some(parent) = stack.last_mut() {
-                        parent.text = Some(text.into_owned());
-                    }
-                }
-                _ => (),
+                _ => {}
             },
-            Err(e) => panic!("Error at position {}: {:?}", reader.buffer_position(), e),
-            _ => (),
-        }
-        buf.clear();
+        )
+        .detach();
+
+        // First we start the file watcher
+        let view_clone = view.clone();
+        cx.spawn(|mut cx| async move {
+            let (mut watcher, mut rx) = async_watcher().unwrap();
+
+            // Add a path to be watched. All files and directories at that path and
+            // below will be monitored for changes.
+            watcher
+                .watch(std::path::Path::new("ui"), RecursiveMode::Recursive)
+                .unwrap();
+
+            while let Some(res) = rx.next().await {
+                match res {
+                    Ok(event) => match event.kind {
+                        EventKind::Modify(modify_kind) => match modify_kind {
+                            notify::event::ModifyKind::Data(_) => {
+                                cx.update_view(&view_clone, |this, cx| {
+                                    cx.emit(FileChangeEvent::DataChange);
+                                    cx.notify();
+                                });
+                            }
+                            _ => {}
+                        },
+                        _ => {}
+                    },
+                    Err(e) => println!("watch error: {:?}", e),
+                }
+            }
+        })
+        .detach();
+
+        view
     }
 
-    stack.pop().unwrap_or_else(|| Component {
-        elem: "error".to_string(),
-        text: Some("error".to_string()),
-        attributes: vec![],
-        children: vec![],
-    })
+    pub fn read_xml_file() -> String {
+        // First load file FMT100.gpuiml from "ui" directory directly to string
+        let mut xml = String::new();
+        std::fs::File::open("ui/FMT100.gpuiml")
+            .unwrap()
+            .read_to_string(&mut xml)
+            .unwrap();
+
+        xml
+    }
 }
 
 impl Render for HelloWorld {
     fn render(&mut self, cx: &mut ViewContext<Self>) -> impl IntoElement {
-        let root_lock = self.root_component.lock().unwrap();
-        // Now, the locked root component can be used safely within this scope
-        println!("Rendering HelloWorld: {:#?}", *root_lock);
-
         // Pass a reference to the locked component to render_component
-        render_component(&*root_lock)
+        render_component(&self.root_component)
     }
 }
 
-fn render_component(component: &Component) -> impl IntoElement {
-    match component.elem.as_str() {
-        "div" => {
-            let mut element = div();
-            // Apply attributes
-            for (k, v) in &component.attributes {
-                match k.as_str() {
-                    "bg" => element = element.bg(hex_to_rgb(v)),
-                    "flex" => element = element.flex(),
-                    "size_full" => element = element.size_full(),
-                    "justify-center" => element = element.justify_center(),
-                    _ => { /* ignore unknown attributes */ }
-                }
-            }
-            // Recursively render children and add them
-            if !component.children.is_empty() {
-                let children_elements = component.children.iter().map(render_component);
-                element = element.children(children_elements);
-            }
+fn async_watcher() -> notify::Result<(RecommendedWatcher, Receiver<notify::Result<Event>>)> {
+    let (mut tx, rx) = channel(1);
 
-            // Add text if exists
-            if let Some(text) = &component.text {
-                element = element.child(text.clone());
-            }
+    // Automatically select the best implementation for your platform.
+    // You can also access each implementation directly e.g. INotifyWatcher.
+    let watcher = RecommendedWatcher::new(
+        move |res| {
+            futures::executor::block_on(async {
+                tx.send(res).await.unwrap();
+            })
+        },
+        Config::default(),
+    )?;
 
-            element
-        }
-        // Handle other element types as needed
-        _ => div(),
-    }
-}
-
-// Convert #RRGGBB to rgb(0x000000) format where 0x000000 is the hex value of the color in integer
-// rgb is function call to convert hex to rgb
-fn hex_to_rgb(hex: &str) -> Rgba {
-    let hex = hex.trim_start_matches('#');
-    let r = u32::from_str_radix(&hex[0..2], 16).unwrap();
-    let g = u32::from_str_radix(&hex[2..4], 16).unwrap();
-    let b = u32::from_str_radix(&hex[4..6], 16).unwrap();
-    // u32 is the hex value of the color
-    let value: u32 = (r << 16) + (g << 8) + b;
-    rgb(value)
+    Ok((watcher, rx))
 }
