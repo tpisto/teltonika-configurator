@@ -19,3 +19,4 @@ bonsaidb = { version = "0.5.0", features = ["local-full"] }
 quick-xml = "0.31.0"
 notify = "6.1.1"
 futures = "0.3.30"
+rust-embed = "8.2.0"

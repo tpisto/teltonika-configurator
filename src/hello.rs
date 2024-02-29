@@ -5,8 +5,11 @@ use futures::{
     SinkExt, StreamExt,
 };
 use notify::{Config, Event, EventKind, RecommendedWatcher, RecursiveMode, Watcher};
-use std::{fs::File, sync::{Arc, Mutex}};
 use std::{borrow::Cow, io::Read};
+use std::{
+    fs::File,
+    sync::{Arc, Mutex},
+};
 
 use crate::component_tree::*;
 
@@ -95,7 +98,12 @@ impl HelloWorld {
 impl Render for HelloWorld {
     fn render(&mut self, cx: &mut ViewContext<Self>) -> impl IntoElement {
         // Pass a reference to the locked component to render_component
-        render_component(&self.root_component)
+        let components = render_component(&self.root_component);
+        // Root element must be a div
+        match components {
+            ComponentType::Div(div) => div,
+            _ => div().child("Error: root element must be a div!"),
+        }
     }
 }
 

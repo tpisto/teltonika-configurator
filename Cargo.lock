@@ -2435,6 +2435,7 @@ dependencies = [
  "gpui",
  "notify",
  "quick-xml 0.31.0",
+ "rust-embed",
  "serde",
  "serde_json",
  "toml 0.8.10",

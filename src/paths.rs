@@ -1,5 +1,3 @@
-// (c) MatthiasGrandl/Loungy, MIT license
-
 use std::{path::PathBuf, sync::OnceLock};
 
 pub struct Paths {
@@ -36,5 +34,5 @@ impl Paths {
 
 pub fn paths() -> &'static Paths {
     static PATHS: OnceLock<Paths> = OnceLock::new();
-    PATHS.get_or_init(|| Paths::new())
+    PATHS.get_or_init(Paths::new)
 }

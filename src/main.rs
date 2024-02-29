@@ -1,12 +1,15 @@
 use gpui::*;
 
+mod assets;
 mod component_tree;
 mod db;
 mod hello;
 mod paths;
 mod theme;
 
+use assets::Assets;
 use hello::HelloWorld;
+use paths::Paths;
 
 pub enum CounterEvent {
     Increase { amount: i32 },
@@ -17,7 +20,7 @@ impl EventEmitter<CounterEvent> for HelloWorld {}
 fn main() {
     tracing_subscriber::fmt::init();
 
-    App::new().run(|cx: &mut AppContext| {
+    App::new().with_assets(Assets).run(|cx: &mut AppContext| {
         // Displays
         let displays = cx.displays();
 

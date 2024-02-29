@@ -1,13 +1,15 @@
-<div flex size-full flex-col>
-  
-  <div flex size-full h-20>
-    <div flex size-full w-96 bg="#ff0000" />
-    <div flex size-full bg="#00ff00" />
+<div class="flex size-full flex-col">
+  <div class="flex size-full h-20">
+    <div class="flex size-full w-96 bg-[#ff0000]" />
+    <div class="flex size-full bg-[#00ff00]" />
   </div>
 
-  <div flex size-full>
-    <div flex size-full w-96 bg="#ff00ff" />
-    <div flex size-full bg="#00ffff" />
+  <div class="flex size-full">
+    <div class="flex size-full w-96 bg-[#ff00ff]" />
+    <div class="flex size-full bg-[#808080] justify-center items-center">
+      <div class="flex rounded-4px bg-[#ff0000]">
+        <svg path="icons/activity.svg" class="size-12 text-color-[#ffff00]"></svg>
+      </div>
+    </div>
   </div>
-
 </div>
