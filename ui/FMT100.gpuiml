@@ -1,15 +1,33 @@
-<div class="flex size-full flex-col">
-  <div class="flex size-full h-20">
-    <div class="flex size-full w-96 bg-[#ff0000]" />
-    <div class="flex size-full bg-[#00ff00]" />
+<div class="flex size-full flex-col bg-[#000211]" font="Roboto">
+  <div class="flex size-full h-24 px-4 py-4 border-[#ffffff20] border-b text-color-[#ffffff90]">
+    <!-- abc -->
   </div>
 
-  <div class="flex size-full">
-    <div class="flex size-full w-96 bg-[#ff00ff]" />
-    <div class="flex size-full bg-[#808080] justify-center items-center">
-      <div class="flex rounded-4px bg-[#ff0000]">
-        <svg path="icons/activity.svg" class="size-12 text-color-[#ffff00]"></svg>
+  <div class="flex bg-[#ffffff90] w-48 h-96 flex-auto">
+    
+    <div class="flex text-color-[#ffffff90] font-normal text-l p-4">
+      <!-- Good looking button in tailwind using div -->
+      <div class="flex items-center justify-center w-24 h-10 border-[#ffffff20] border rounded-md">
+        <div class="text-color-[#ffffff90] font-medium text-sm">Button</div>
       </div>
     </div>
+
+    <div class="flex text-color-[#ffffff90] font-normal text-l p-4">
+      <!-- Good looking button in tailwind using div -->
+      <div class="flex items-center justify-center w-24 h-10 border-[#ffffff20] border rounded-md">
+        <div class="text-color-[#ffffff90] font-medium text-sm">Button</div>
+      </div>
+    </div>
+
+    <div class="flex text-color-[#ffffff90] font-normal text-l p-4">
+      <!-- Good looking button in tailwind using div -->
+      <div class="flex items-center justify-center w-24 h-10 border-[#ffffff20] border rounded-md">
+        <div class="text-color-[#ffffff90] font-medium text-sm">Button</div>
+      </div>
+    </div>
+
+    <!-- <div class="absolute top-10 left-10 border border-[#ffffff20] w-10 bg-[#ffffff20]">
+    Testing 1234
+  </div> -->
   </div>
 </div>

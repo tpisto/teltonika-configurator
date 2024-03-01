@@ -1,3 +1,4 @@
+use futures::future::Shared;
 use gpui::*;
 
 use quick_xml::events::Event;
@@ -179,17 +180,29 @@ pub fn render_component(component: &Component) -> ComponentType {
 
 // Convert #RRGGBB to rgb(0x000000) format where 0x000000 is the hex value of the color in integer
 // rgb is function call to convert hex to rgb
-fn hex_to_rgb(hex: &str) -> Rgba {
+fn hex_to_rgba(hex: &str) -> Rgba {
     let hex = hex.trim_start_matches('#');
     let r = u32::from_str_radix(&hex[0..2], 16).unwrap();
     let g = u32::from_str_radix(&hex[2..4], 16).unwrap();
     let b = u32::from_str_radix(&hex[4..6], 16).unwrap();
-    // u32 is the hex value of the color
-    let value: u32 = (r << 16) + (g << 8) + b;
-    rgb(value)
+    // Get also the alpha channel if it exists
+    let a = if hex.len() == 8 {
+        u32::from_str_radix(&hex[6..8], 16).unwrap()
+    } else {
+        255
+    };
+    // u32 is the hex value of the color with alpha
+    let value = (r << 24) | (g << 16) | (b << 8) | a;
+    rgba(value)
 }
 
 fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) -> T {
+    // Font attribute
+    if let Some(font_attr_value) = attributes.iter().find(|(k, _)| k == "font").map(|(_, v)| v) {
+        let font: SharedString = SharedString::from(font_attr_value.clone());
+        element = element.font(font);
+    }
+    // Class attribute
     if let Some(class_attr_value) = attributes
         .iter()
         .find(|(k, _)| k == "class")
@@ -203,17 +216,28 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
             if class_name.starts_with("bg-[") {
                 // Handle custom background color
                 let hex = &class_name["bg-[".len()..class_name.len() - 1];
-                let color = hex_to_rgb(hex);
+                let color = hex_to_rgba(hex);
                 element = element.bg(color);
             } else if class_name.starts_with("text-color-[") {
                 // Handle custom text color
                 let hex = &class_name["text-color-[".len()..class_name.len() - 1];
-                let color = hex_to_rgb(hex);
+                let color = hex_to_rgba(hex);
                 element = element.text_color(color);
+            } else if class_name.starts_with("text-[") {
+                let absolute_length =
+                    extract_length_from_class_name(class_name.strip_prefix("text-[").unwrap());
+                element = element.text_size(absolute_length);
+            } else if class_name.starts_with("border-[#") {
+                let hex = &class_name["border-[".len()..class_name.len() - 1];
+                let color = hex_to_rgba(hex);
+                element = element.border_color(color);
             } else {
                 // Handle predefined classes
                 match class_name {
                     "flex" => element = element.flex(),
+                    "flex-grow" => element = element.flex_grow(),
+                    "flex-shrink" => element = element.flex_shrink(),
+                    "flex-shrink-0" => element = element.flex_shrink_0(),
                     "block" => element = element.block(),
                     "absolute" => element = element.absolute(),
                     "relative" => element = element.relative(),
@@ -222,6 +246,147 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                     "overflow-hidden" => element = element.overflow_hidden(),
                     "overflow-x-hidden" => element = element.overflow_x_hidden(),
                     "overflow-y-hidden" => element = element.overflow_y_hidden(),
+
+                    // Align
+                    "items-start" => element = element.items_start(),
+                    "items-end" => element = element.items_end(),
+                    "items-center" => element = element.items_center(),
+
+                    // Top section
+                    "top-0" => element = element.top_0(),
+                    "top-1" => element = element.top_1(),
+                    "top-2" => element = element.top_2(),
+                    "top-3" => element = element.top_3(),
+                    "top-4" => element = element.top_4(),
+                    "top-5" => element = element.top_5(),
+                    "top-6" => element = element.top_6(),
+                    "top-8" => element = element.top_8(),
+                    "top-10" => element = element.top_10(),
+                    "top-12" => element = element.top_12(),
+                    "top-16" => element = element.top_16(),
+                    "top-20" => element = element.top_20(),
+                    "top-24" => element = element.top_24(),
+                    "top-32" => element = element.top_32(),
+                    "top-40" => element = element.top_40(),
+                    "top-48" => element = element.top_48(),
+                    "top-56" => element = element.top_56(),
+                    "top-64" => element = element.top_64(),
+                    "top-72" => element = element.top_72(),
+                    "top-80" => element = element.top_80(),
+                    "top-96" => element = element.top_96(),
+                    "top-auto" => element = element.top_auto(),
+                    "top-full" => element = element.top_full(),
+                    "top-1/2" => element = element.top_1_2(),
+                    "top-1/3" => element = element.top_1_3(),
+                    "top-2/3" => element = element.top_2_3(),
+                    "top-1/4" => element = element.top_1_4(),
+                    "top-2/4" => element = element.top_2_4(),
+                    "top-3/4" => element = element.top_3_4(),
+                    "top-1/5" => element = element.top_1_5(),
+                    "top-2/5" => element = element.top_2_5(),
+                    "top-3/5" => element = element.top_3_5(),
+
+                    // Right section
+                    "right-0" => element = element.right_0(),
+                    "right-1" => element = element.right_1(),
+                    "right-2" => element = element.right_2(),
+                    "right-3" => element = element.right_3(),
+                    "right-4" => element = element.right_4(),
+                    "right-5" => element = element.right_5(),
+                    "right-6" => element = element.right_6(),
+                    "right-8" => element = element.right_8(),
+                    "right-10" => element = element.right_10(),
+                    "right-12" => element = element.right_12(),
+                    "right-16" => element = element.right_16(),
+                    "right-20" => element = element.right_20(),
+                    "right-24" => element = element.right_24(),
+                    "right-32" => element = element.right_32(),
+                    "right-40" => element = element.right_40(),
+                    "right-48" => element = element.right_48(),
+                    "right-56" => element = element.right_56(),
+                    "right-64" => element = element.right_64(),
+                    "right-72" => element = element.right_72(),
+                    "right-80" => element = element.right_80(),
+                    "right-96" => element = element.right_96(),
+                    "right-auto" => element = element.right_auto(),
+                    "right-full" => element = element.right_full(),
+                    "right-1/2" => element = element.right_1_2(),
+                    "right-1/3" => element = element.right_1_3(),
+                    "right-2/3" => element = element.right_2_3(),
+                    "right-1/4" => element = element.right_1_4(),
+                    "right-2/4" => element = element.right_2_4(),
+                    "right-3/4" => element = element.right_3_4(),
+                    "right-1/5" => element = element.right_1_5(),
+                    "right-2/5" => element = element.right_2_5(),
+                    "right-3/5" => element = element.right_3_5(),
+
+                    // Bottom section
+                    "bottom-0" => element = element.bottom_0(),
+                    "bottom-1" => element = element.bottom_1(),
+                    "bottom-2" => element = element.bottom_2(),
+                    "bottom-3" => element = element.bottom_3(),
+                    "bottom-4" => element = element.bottom_4(),
+                    "bottom-5" => element = element.bottom_5(),
+                    "bottom-6" => element = element.bottom_6(),
+                    "bottom-8" => element = element.bottom_8(),
+                    "bottom-10" => element = element.bottom_10(),
+                    "bottom-12" => element = element.bottom_12(),
+                    "bottom-16" => element = element.bottom_16(),
+                    "bottom-20" => element = element.bottom_20(),
+                    "bottom-24" => element = element.bottom_24(),
+                    "bottom-32" => element = element.bottom_32(),
+                    "bottom-40" => element = element.bottom_40(),
+                    "bottom-48" => element = element.bottom_48(),
+                    "bottom-56" => element = element.bottom_56(),
+                    "bottom-64" => element = element.bottom_64(),
+                    "bottom-72" => element = element.bottom_72(),
+                    "bottom-80" => element = element.bottom_80(),
+                    "bottom-96" => element = element.bottom_96(),
+                    "bottom-auto" => element = element.bottom_auto(),
+                    "bottom-full" => element = element.bottom_full(),
+                    "bottom-1/2" => element = element.bottom_1_2(),
+                    "bottom-1/3" => element = element.bottom_1_3(),
+                    "bottom-2/3" => element = element.bottom_2_3(),
+                    "bottom-1/4" => element = element.bottom_1_4(),
+                    "bottom-2/4" => element = element.bottom_2_4(),
+                    "bottom-3/4" => element = element.bottom_3_4(),
+                    "bottom-1/5" => element = element.bottom_1_5(),
+                    "bottom-2/5" => element = element.bottom_2_5(),
+                    "bottom-3/5" => element = element.bottom_3_5(),
+
+                    // Left section
+                    "left-0" => element = element.left_0(),
+                    "left-1" => element = element.left_1(),
+                    "left-2" => element = element.left_2(),
+                    "left-3" => element = element.left_3(),
+                    "left-4" => element = element.left_4(),
+                    "left-5" => element = element.left_5(),
+                    "left-6" => element = element.left_6(),
+                    "left-8" => element = element.left_8(),
+                    "left-10" => element = element.left_10(),
+                    "left-12" => element = element.left_12(),
+                    "left-16" => element = element.left_16(),
+                    "left-20" => element = element.left_20(),
+                    "left-24" => element = element.left_24(),
+                    "left-32" => element = element.left_32(),
+                    "left-40" => element = element.left_40(),
+                    "left-48" => element = element.left_48(),
+                    "left-56" => element = element.left_56(),
+                    "left-64" => element = element.left_64(),
+                    "left-72" => element = element.left_72(),
+                    "left-80" => element = element.left_80(),
+                    "left-96" => element = element.left_96(),
+                    "left-auto" => element = element.left_auto(),
+                    "left-full" => element = element.left_full(),
+                    "left-1/2" => element = element.left_1_2(),
+                    "left-1/3" => element = element.left_1_3(),
+                    "left-2/3" => element = element.left_2_3(),
+                    "left-1/4" => element = element.left_1_4(),
+                    "left-2/4" => element = element.left_2_4(),
+                    "left-3/4" => element = element.left_3_4(),
+                    "left-1/5" => element = element.left_1_5(),
+                    "left-2/5" => element = element.left_2_5(),
+                    "left-3/5" => element = element.left_3_5(),
 
                     // Cursor
                     "cursor-default" => element = element.cursor_default(),
@@ -248,9 +413,6 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                     "justify-around" => element = element.justify_around(),
                     "justify-start" => element = element.justify_start(),
                     "justify-end" => element = element.justify_end(),
-                    "items-start" => element = element.items_start(),
-                    "items-end" => element = element.items_end(),
-                    "items-center" => element = element.items_center(),
                     "flex-col" => element = element.flex_col(),
                     "flex-row" => element = element.flex_row(),
                     "flex-col_reverse" => element = element.flex_col_reverse(),
@@ -259,9 +421,6 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                     "flex-auto" => element = element.flex_auto(),
                     "flex-initial" => element = element.flex_initial(),
                     "flex-none" => element = element.flex_none(),
-                    "flex-grow" => element = element.flex_grow(),
-                    "flex-shrink" => element = element.flex_shrink(),
-                    "flex-shrink_0" => element = element.flex_shrink_0(),
                     "shadow-sm" => element = element.shadow_sm(),
                     "shadow-md" => element = element.shadow_md(),
                     "shadow-lg" => element = element.shadow_lg(),
@@ -751,7 +910,7 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                     "size-auto" => element = element.size_auto(),
 
                     // Border
-                    "border-solid" => element = element.border(),
+                    // "border-solid" => element = element.border_solid()
                     // "border-dashed" => element = element.border_dashed(),
                     // "border-dotted" => element = element.border_dotted(),
                     // "border-double" => element = element.border_double(),
@@ -838,6 +997,26 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                     "rounded-bl-lg" => element = element.rounded_bl_lg(),
                     "rounded-bl-full" => element = element.rounded_bl_full(),
 
+                    // Font
+                    "font-thin" => element = element.font_weight(FontWeight::THIN),
+                    "font-extralight" => element = element.font_weight(FontWeight::EXTRA_LIGHT),
+                    "font-light" => element = element.font_weight(FontWeight::LIGHT),
+                    "font-normal" => element = element.font_weight(FontWeight::NORMAL),
+                    "font-medium" => element = element.font_weight(FontWeight::MEDIUM),
+                    "font-semibold" => element = element.font_weight(FontWeight::SEMIBOLD),
+                    "font-bold" => element = element.font_weight(FontWeight::BOLD),
+                    "font-extrabold" => element = element.font_weight(FontWeight::EXTRA_BOLD),
+                    "font-black" => element = element.font_weight(FontWeight::BLACK),
+
+                    // Text
+                    "text-xs" => element = element.text_xs(),
+                    "text-sm" => element = element.text_sm(),
+                    "text-base" => element = element.text_base(),
+                    "text-lg" => element = element.text_lg(),
+                    "text-xl" => element = element.text_xl(),
+                    "text-2xl" => element = element.text_2xl(),
+                    "text-3xl" => element = element.text_3xl(),
+
                     _ => {
                         // Additional dynamic attribute handling...
                         if let Some(suffix) = class_name.strip_prefix("rounded-") {
@@ -852,6 +1031,15 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
                                 Some("tr") => element.rounded_tr(absolute_length),
                                 Some("br") => element.rounded_br(absolute_length),
                                 Some("bl") => element.rounded_bl(absolute_length),
+                                _ => element.rounded(absolute_length), // Default to applying rounding to all corners
+                            };
+                        } else if let Some(suffix) = class_name.strip_prefix("border-") {
+                            let absolute_length = extract_length_from_class_name(suffix);
+                            element = match suffix.split('-').next() {
+                                Some("t") => element.border_t_width(absolute_length),
+                                Some("r") => element.border_r_width(absolute_length),
+                                Some("b") => element.border_b_width(absolute_length),
+                                Some("l") => element.border_l_width(absolute_length),
                                 _ => element.rounded(absolute_length), // Default to applying rounding to all corners
                             };
                         }

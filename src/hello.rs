@@ -97,8 +97,16 @@ impl HelloWorld {
 
 impl Render for HelloWorld {
     fn render(&mut self, cx: &mut ViewContext<Self>) -> impl IntoElement {
+        // Time the render
+        let start = std::time::Instant::now();
+
         // Pass a reference to the locked component to render_component
         let components = render_component(&self.root_component);
+
+        // Print the render time
+        let elapsed = start.elapsed();
+        println!("Component construction time: {:?}", elapsed);
+
         // Root element must be a div
         match components {
             ComponentType::Div(div) => div,
