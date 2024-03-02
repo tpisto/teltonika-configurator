@@ -123,7 +123,7 @@ pub fn render_component(component: &Component) -> ComponentType {
                 element = element.child(text.clone());
             }
 
-            let element = set_attributes::<Div>(element, component.attributes.clone());
+            let element = set_attributes::<Div>(element, &component.attributes);
             ComponentType::Div(element)
         }
         "img" => {
@@ -136,7 +136,7 @@ pub fn render_component(component: &Component) -> ComponentType {
 
             if let Some(src) = src {
                 let mut element = img(src);
-                element = set_attributes::<Img>(element, component.attributes.clone());
+                element = set_attributes::<Img>(element, &component.attributes);
                 ComponentType::Img(element)
             } else {
                 ComponentType::Div(div().child("Error: img element must have src attribute"))
@@ -152,7 +152,7 @@ pub fn render_component(component: &Component) -> ComponentType {
 
             if let Some(path) = path {
                 let mut element = svg().path(path);
-                element = set_attributes::<Svg>(element, component.attributes.clone());
+                element = set_attributes::<Svg>(element, &component.attributes);
                 ComponentType::Svg(element)
             } else {
                 ComponentType::Div(div().child("Error: img element must have src attribute"))
@@ -182,7 +182,7 @@ fn hex_to_rgba(hex: &str) -> Rgba {
     rgba(value)
 }
 
-fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) -> T {
+fn set_attributes<T: Styled>(mut element: T, attributes: &Vec<(String, String)>) -> T {
     // Font attribute
     if let Some(font_attr_value) = attributes.iter().find(|(k, _)| k == "font").map(|(_, v)| v) {
         let font: SharedString = SharedString::from(font_attr_value.clone());
