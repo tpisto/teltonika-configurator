@@ -11,7 +11,7 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use crate::component_tree::*;
+use xml2gpui::*;
 
 pub enum FileChangeEvent {
     DataChange,
@@ -20,7 +20,7 @@ impl EventEmitter<FileChangeEvent> for HelloWorld {}
 
 pub struct HelloWorld {
     pub text: SharedString,
-    pub root_component: crate::component_tree::Component,
+    pub root_component: component_tree::Component,
 }
 
 impl HelloWorld {
@@ -28,7 +28,7 @@ impl HelloWorld {
         let xml = HelloWorld::read_xml_file();
         let this = Self {
             text: "Hello, World!".into(),
-            root_component: parse_component(xml),
+            root_component: component_tree::parse_component(xml),
         };
 
         let view = cx.new_view(|_cx| this);
@@ -40,7 +40,8 @@ impl HelloWorld {
             |subscriber, emitter: &FileChangeEvent, cx| match emitter {
                 FileChangeEvent::DataChange => {
                     subscriber.update(cx, |this, cx| {
-                        this.root_component = parse_component(HelloWorld::read_xml_file());
+                        this.root_component =
+                            component_tree::parse_component(HelloWorld::read_xml_file());
                         cx.notify();
                     });
                 }
@@ -57,7 +58,10 @@ impl HelloWorld {
             // Add a path to be watched. All files and directories at that path and
             // below will be monitored for changes.
             watcher
-                .watch(std::path::Path::new("ui"), RecursiveMode::Recursive)
+                .watch(
+                    std::path::Path::new("crates/configurator/ui"),
+                    RecursiveMode::Recursive,
+                )
                 .unwrap();
 
             while let Some(res) = rx.next().await {
@@ -86,7 +90,7 @@ impl HelloWorld {
     pub fn read_xml_file() -> String {
         // First load file FMT100.gpuiml from "ui" directory directly to string
         let mut xml = String::new();
-        std::fs::File::open("ui/FMT100.gpuiml")
+        std::fs::File::open("crates/configurator/ui/FMT100.gpuiml")
             .unwrap()
             .read_to_string(&mut xml)
             .unwrap();
@@ -101,7 +105,7 @@ impl Render for HelloWorld {
         let start = std::time::Instant::now();
 
         // Pass a reference to the locked component to render_component
-        let components = render_component(&self.root_component);
+        let components = component_tree::render_component(&self.root_component);
 
         // Print the render time
         let elapsed = start.elapsed();
@@ -109,7 +113,7 @@ impl Render for HelloWorld {
 
         // Root element must be a div
         match components {
-            ComponentType::Div(div) => div,
+            component_tree::ComponentType::Div(div) => div,
             _ => div().child("Error: root element must be a div!"),
         }
     }

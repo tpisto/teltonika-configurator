@@ -1,7 +1,6 @@
 use gpui::*;
 
 mod assets;
-mod component_tree;
 mod db;
 mod hello;
 mod paths;
