@@ -1,1 +1,1 @@
-pub mod component_tree;
+pub mod tree;

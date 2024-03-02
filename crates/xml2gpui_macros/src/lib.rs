@@ -90,11 +90,11 @@ pub fn tailwind_to_gpui(input: TokenStream) -> TokenStream {
                     _ => "NORMAL",
                 }, class.span());
                 quote! {
-                    #class => element.font_weight(FontWeight::#font_weight),
+                    #class => #element_name.font_weight(FontWeight::#font_weight),
                 }
             } else {
                 quote! {
-                    #class => element.#method_name(),
+                    #class => #element_name.#method_name(),
                 }
             }
         })

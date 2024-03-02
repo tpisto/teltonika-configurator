@@ -11,8 +11,6 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use xml2gpui::*;
-
 pub enum FileChangeEvent {
     DataChange,
 }
@@ -20,7 +18,7 @@ impl EventEmitter<FileChangeEvent> for HelloWorld {}
 
 pub struct HelloWorld {
     pub text: SharedString,
-    pub root_component: component_tree::Component,
+    pub root_component: xml2gpui::tree::Component,
 }
 
 impl HelloWorld {
@@ -28,7 +26,7 @@ impl HelloWorld {
         let xml = HelloWorld::read_xml_file();
         let this = Self {
             text: "Hello, World!".into(),
-            root_component: component_tree::parse_component(xml),
+            root_component: xml2gpui::tree::parse_xml(xml),
         };
 
         let view = cx.new_view(|_cx| this);
@@ -41,7 +39,7 @@ impl HelloWorld {
                 FileChangeEvent::DataChange => {
                     subscriber.update(cx, |this, cx| {
                         this.root_component =
-                            component_tree::parse_component(HelloWorld::read_xml_file());
+                            xml2gpui::tree::parse_xml(HelloWorld::read_xml_file());
                         cx.notify();
                     });
                 }
@@ -105,7 +103,7 @@ impl Render for HelloWorld {
         let start = std::time::Instant::now();
 
         // Pass a reference to the locked component to render_component
-        let components = component_tree::render_component(&self.root_component);
+        let components = xml2gpui::tree::render_component(&self.root_component);
 
         // Print the render time
         let elapsed = start.elapsed();
@@ -113,7 +111,7 @@ impl Render for HelloWorld {
 
         // Root element must be a div
         match components {
-            component_tree::ComponentType::Div(div) => div,
+            xml2gpui::tree::ComponentType::Div(div) => div,
             _ => div().child("Error: root element must be a div!"),
         }
     }

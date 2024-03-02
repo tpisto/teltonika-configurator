@@ -1,10 +1,7 @@
-use futures::future::Shared;
 use gpui::*;
 
 use quick_xml::events::Event;
-use quick_xml::name::QName;
 use quick_xml::reader::Reader;
-use std::io::Read;
 
 use xml2gpui_macros::tailwind_to_gpui;
 
@@ -16,7 +13,7 @@ pub struct Component {
     pub children: Vec<Component>,
 }
 
-pub fn parse_component(xml: String) -> Component {
+pub fn parse_xml(xml: String) -> Component {
     let mut reader = Reader::from_str(xml.as_str());
     reader
         .expand_empty_elements(true)
@@ -83,7 +80,6 @@ pub fn parse_component(xml: String) -> Component {
                 _ => (),
             },
             Err(e) => panic!("Error at position {}: {:?}", reader.buffer_position(), e),
-            _ => (),
         }
         buf.clear();
     }
@@ -106,7 +102,7 @@ pub enum ComponentType {
 }
 
 pub fn render_component(component: &Component) -> ComponentType {
-    let mut element = match component.elem.as_str() {
+    let element = match component.elem.as_str() {
         "div" => {
             let mut element = div();
 
@@ -207,6 +203,10 @@ fn set_attributes<T: Styled>(mut element: T, attributes: Vec<(String, String)>) 
             element = tailwind_to_gpui!(element, class_name,
                 // Flex
                 [ "flex", "flex-grow", "flex-shrink", "flex-shrink-0" ],
+                // Flex wrap
+                [ "flex-wrap", "flex-wrap-reverse", "flex-nowrap" ],
+                // Align content
+                [ "content-normal", "content-center", "content-start", "content-end", "content-between", "content-around", "content-evenly", "content-stretch" ],
                 // Flex general
                 [ "block", "absolute", "relative", "visible", "invisible", "overflow-hidden", "overflow-x-hidden", "overflow-y-hidden" ],
                 // Align

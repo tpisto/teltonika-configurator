@@ -3,7 +3,7 @@
     <!-- abc -->
   </div>
 
-  <div class="flex bg-[#ffffff90] w-48 h-96 flex-auto">
+  <div class="flex bg-[#ffffff90] w-64 h-96 flex-auto flex-wrap content-start">
     
     <div class="flex text-color-[#ffffff90] font-normal text-l p-4">
       <!-- Good looking button in tailwind using div -->
