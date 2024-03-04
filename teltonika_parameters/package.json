@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "wtf_wikipedia": "^10.3.0"
+    "wtf_wikipedia": "^10.3.0",
+    "lodash": "^4.17.4"
   }
 }
