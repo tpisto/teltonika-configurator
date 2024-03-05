@@ -1,8 +1,10 @@
 use gpui::*;
+use gpui::{div, prelude::*, px, Render, SharedString, Styled, View, WindowContext};
 
 use quick_xml::events::Event;
 use quick_xml::reader::Reader;
 
+use crate::components::input;
 use xml2gpui_macros::tailwind_to_gpui;
 
 #[derive(Debug)]
@@ -11,9 +13,11 @@ pub struct Component {
     pub text: Option<String>,
     pub attributes: Vec<(String, String)>,
     pub children: Vec<Component>,
+    pub number: i32,
 }
 
 pub fn parse_xml(xml: String) -> Component {
+    let mut component_number = 1;
     let mut reader = Reader::from_str(xml.as_str());
     reader
         .expand_empty_elements(true)
@@ -51,7 +55,9 @@ pub fn parse_xml(xml: String) -> Component {
                         text: None,
                         attributes,
                         children: Vec::new(),
+                        number: component_number,
                     };
+                    component_number += 1;
 
                     if let Event::Empty(_) = event {
                         // For Event::Empty, add directly to the parent if exists
@@ -89,6 +95,7 @@ pub fn parse_xml(xml: String) -> Component {
         text: Some("error".to_string()),
         attributes: vec![],
         children: vec![],
+        number: 0,
     })
 }
 
@@ -96,15 +103,25 @@ pub fn parse_xml(xml: String) -> Component {
 // https://doc.rust-lang.org/reference/items/traits.html#object-safety
 // Sized must not be a supertrait. In other words, it must not require Self: Sized.
 pub enum ComponentType {
-    Div(Div),
+    Div(Stateful<Div>),
     Img(Img),
     Svg(Svg),
+    Input(Input),
+}
+
+pub enum Input {
+    InputNumber(input::number::InputNumber),
+    InputText(input::text::InputText),
+    InputCheckbox(input::checkbox::InputCheckbox),
+    InputSelect(input::select::InputSelect),
 }
 
 pub fn render_component(component: &Component) -> ComponentType {
+    let component_id = ElementId::from(component.number);
+
     let element = match component.elem.as_str() {
         "div" => {
-            let mut element = div();
+            let mut element = div().id(component_id.clone());
 
             // Recursively render children and add them
             if !component.children.is_empty() {
@@ -114,6 +131,21 @@ pub fn render_component(component: &Component) -> ComponentType {
                         ComponentType::Div(div) => element = element.child(div),
                         ComponentType::Img(img) => element = element.child(img),
                         ComponentType::Svg(svg) => element = element.child(svg),
+                        ComponentType::Input(input) => {
+                            // The nested match for handling different input types
+                            match input {
+                                Input::InputNumber(input_number) => {
+                                    element = element.child(input_number)
+                                }
+                                Input::InputText(input_text) => element = element.child(input_text),
+                                Input::InputCheckbox(input_checkbox) => {
+                                    element = element.child(input_checkbox)
+                                }
+                                Input::InputSelect(input_radio) => {
+                                    element = element.child(input_radio)
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -123,7 +155,10 @@ pub fn render_component(component: &Component) -> ComponentType {
                 element = element.child(text.clone());
             }
 
-            let element = set_attributes::<Div>(element, &component.attributes);
+            let element = set_attributes(element, &component.attributes);
+            // Set stateful attributes to div
+            let element = set_stateful_element_attributes(element, &component.attributes);
+
             ComponentType::Div(element)
         }
         "img" => {
@@ -139,7 +174,11 @@ pub fn render_component(component: &Component) -> ComponentType {
                 element = set_attributes::<Img>(element, &component.attributes);
                 ComponentType::Img(element)
             } else {
-                ComponentType::Div(div().child("Error: img element must have src attribute"))
+                ComponentType::Div(
+                    div()
+                        .id(component_id)
+                        .child("Error: img element must have src attribute"),
+                )
             }
         }
         "svg" => {
@@ -155,10 +194,65 @@ pub fn render_component(component: &Component) -> ComponentType {
                 element = set_attributes::<Svg>(element, &component.attributes);
                 ComponentType::Svg(element)
             } else {
-                ComponentType::Div(div().child("Error: img element must have src attribute"))
+                ComponentType::Div(
+                    div()
+                        .id(component_id)
+                        .child("Error: img element must have src attribute"),
+                )
             }
         }
-        _ => ComponentType::Div(div()),
+        "input" => {
+            // let mut element = InputText::new();
+            // element = set_attributes::<InputText>(element, &component.attributes);
+            // ComponentType::InputText(element)
+
+            // Create correct input based on the "type" attribute
+            let input_type = component
+                .attributes
+                .iter()
+                .find(|(k, _)| k == "type")
+                .map(|(_, v)| v.clone());
+
+            match input_type {
+                Some(input_type) => match input_type.as_str() {
+                    "number" => {
+                        let mut element = input::number::InputNumber::new();
+                        element = set_attributes::<input::number::InputNumber>(
+                            element,
+                            &component.attributes,
+                        );
+                        ComponentType::Input(Input::InputNumber(element))
+                    }
+                    "text" => {
+                        let mut element = input::text::InputText::new();
+                        element = set_attributes::<input::text::InputText>(
+                            element,
+                            &component.attributes,
+                        );
+                        ComponentType::Input(Input::InputText(element))
+                    }
+                    "checkbox" => {
+                        let mut element = input::checkbox::InputCheckbox::new();
+                        element = set_attributes::<input::checkbox::InputCheckbox>(
+                            element,
+                            &component.attributes,
+                        );
+                        ComponentType::Input(Input::InputCheckbox(element))
+                    }
+                    "select" => {
+                        let mut element = input::select::InputSelect::new();
+                        element = set_attributes::<input::select::InputSelect>(
+                            element,
+                            &component.attributes,
+                        );
+                        ComponentType::Input(Input::InputSelect(element))
+                    }
+                    _ => ComponentType::Div(div().id(component_id)),
+                },
+                _ => ComponentType::Div(div().id(component_id)),
+            }
+        }
+        _ => ComponentType::Div(div().id(component_id)),
     };
 
     element
@@ -182,7 +276,58 @@ fn hex_to_rgba(hex: &str) -> Rgba {
     rgba(value)
 }
 
+fn set_stateful_element_attributes<T: StatefulInteractiveElement>(
+    mut element: T,
+    attributes: &Vec<(String, String)>,
+) -> T {
+    // Class attribute
+    if let Some(class_attr_value) = attributes
+        .iter()
+        .find(|(k, _)| k == "class")
+        .map(|(_, v)| v)
+    {
+        // Split the class attribute into individual classes
+        let classes = class_attr_value.split_whitespace();
+        for class_name in classes {
+            element = tailwind_to_gpui!(element, class_name,
+                [ "overflow-scroll", "overflow-x-scroll", "overflow-y-scroll" ],
+                _ => {
+                    element
+                }
+            );
+        }
+    }
+    element
+}
+
 fn set_attributes<T: Styled>(mut element: T, attributes: &Vec<(String, String)>) -> T {
+    // Custom attributes that has some default styles
+    if let Some(type_value) = attributes
+        .iter()
+        .find(|(k, _)| k == "type")
+        .map(|(_, v)| v.as_str())
+    {
+        match type_value {
+            "maintable" => {
+                element = element
+                    .flex()
+                    .flex_col()
+                    .p_1()
+                    .size_full()
+                    .border_1()
+                    .border_color(rgb(0x000000));
+            }
+            "subtable" => {
+                element = element
+                    .flex()
+                    .p_1()
+                    .size_full()
+                    .border_1()
+                    .border_color(rgb(0x0000ff));
+            }
+            _ => {}
+        }
+    }
     // Font attribute
     if let Some(font_attr_value) = attributes.iter().find(|(k, _)| k == "font").map(|(_, v)| v) {
         let font: SharedString = SharedString::from(font_attr_value.clone());

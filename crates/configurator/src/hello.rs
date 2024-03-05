@@ -88,7 +88,7 @@ impl HelloWorld {
     pub fn read_xml_file() -> String {
         // First load file FMT100.gpuiml from "ui" directory directly to string
         let mut xml = String::new();
-        std::fs::File::open("crates/configurator/ui/FMT100.gpuiml")
+        std::fs::File::open("crates/configurator/ui/FMBFAMILY.gpuiml")
             .unwrap()
             .read_to_string(&mut xml)
             .unwrap();
@@ -99,20 +99,22 @@ impl HelloWorld {
 
 impl Render for HelloWorld {
     fn render(&mut self, cx: &mut ViewContext<Self>) -> impl IntoElement {
-        // Time the render
-        let start = std::time::Instant::now();
+        // // Time the render
+        // let start = std::time::Instant::now();
 
         // Pass a reference to the locked component to render_component
         let components = xml2gpui::tree::render_component(&self.root_component);
 
-        // Print the render time
-        let elapsed = start.elapsed();
-        println!("Component construction time: {:?}", elapsed);
+        // // Print the render time
+        // let elapsed = start.elapsed();
+        // println!("Component construction time: {:?}", elapsed);
 
         // Root element must be a div
         match components {
             xml2gpui::tree::ComponentType::Div(div) => div,
-            _ => div().child("Error: root element must be a div!"),
+            _ => div()
+                .id("error")
+                .child("Error: root element must be a div!"),
         }
     }
 }

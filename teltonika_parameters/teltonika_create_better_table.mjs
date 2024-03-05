@@ -52,7 +52,7 @@ for (let section of sections) {
     // Collect rows for table
     let finalTableRows = [];
 
-    for (let rowIndex = headerPosition; rowIndex < table.length - 1; rowIndex++) {
+    for (let rowIndex = headerPosition; rowIndex < table.length; rowIndex++) {
       let row = table[rowIndex];
       if (row.col1) {
         let newRow = rowWithHeader(row, headerMap);
@@ -78,7 +78,9 @@ for (let section of sections) {
       // Collect all 'value' properties to a single array
       if (items.length > 1) {
         newItem.value = items.map((item) => item.value);
-      } else if ("value" in items[0]) {
+      }
+      // Not an array, so let's check if we have a value
+      else if ("value" in items[0]) {
         newItem.value = items[0].value;
       }
       return newItem;

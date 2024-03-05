@@ -120,7 +120,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Input mode",
-        "value": "0 – DIN2/AIN1"
+        "value": [
+          "0 – DIN2/AIN1",
+          "1 – Ground Sense"
+        ]
       },
       {
         "parameter_id": "138",
@@ -153,6 +156,15 @@
           "4 – Ultra Deep sleep",
           "6 – Power Off sleep (only for FMB965)"
         ]
+      },
+      {
+        "parameter_id": "103",
+        "parameter_type": "Uint16",
+        "default_value": "1",
+        "min": "1",
+        "max": "3000",
+        "parameter_name": "Timeout",
+        "value": "Minutes"
       }
     ],
     [
@@ -188,6 +200,15 @@
         "max": "30000",
         "parameter_name": "High voltage",
         "value": "mV"
+      },
+      {
+        "parameter_id": "105",
+        "parameter_type": "Uint16",
+        "default_value": "13200",
+        "min": "0",
+        "max": "29999",
+        "parameter_name": "Low voltage",
+        "value": "mV"
       }
     ],
     [
@@ -198,6 +219,15 @@
         "min": "1",
         "max": "60",
         "parameter_name": "Movement Start Delay",
+        "value": "Seconds"
+      },
+      {
+        "parameter_id": "19002",
+        "parameter_type": "Uint16",
+        "default_value": "60",
+        "min": "5",
+        "max": "300",
+        "parameter_name": "Movement Stop Delay",
         "value": "Seconds"
       }
     ],
@@ -233,6 +263,15 @@
         "max": "55",
         "parameter_name": "NTP server 1",
         "value": "String"
+      },
+      {
+        "parameter_id": "903",
+        "parameter_type": "Char",
+        "default_value": "\"pool.ntp.org\"",
+        "min": "0",
+        "max": "55",
+        "parameter_name": "NTP server 2",
+        "value": "String"
       }
     ],
     [
@@ -256,7 +295,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Gravity Filter",
-        "value": "0 Disabled"
+        "value": [
+          "0 Disabled",
+          "1 Enabled"
+        ]
       }
     ]
   ],
@@ -291,6 +333,15 @@
           "0 – Newest",
           "1 – Oldest"
         ]
+      },
+      {
+        "parameter_id": "1003",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "300",
+        "parameter_name": "Network ping timeout",
+        "value": "Seconds"
       }
     ],
     [
@@ -323,6 +374,15 @@
         "max": "32",
         "parameter_name": "APN username",
         "value": "String"
+      },
+      {
+        "parameter_id": "2003",
+        "parameter_type": "Char",
+        "default_value": "\"\"",
+        "min": "0",
+        "max": "32",
+        "parameter_name": "APN password",
+        "value": "String"
       }
     ],
     [
@@ -351,7 +411,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Protocol",
-        "value": "0 – TCP"
+        "value": [
+          "0 – TCP",
+          "1 – UDP"
+        ]
       }
     ],
     [
@@ -380,7 +443,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Backup Server Protocol",
-        "value": "0 - TCP"
+        "value": [
+          "0 - TCP",
+          "1 - UDP"
+        ]
       },
       {
         "parameter_id": "2010",
@@ -417,6 +483,15 @@
         "value": "Number"
       },
       {
+        "parameter_id": "13002",
+        "parameter_type": "Uint16",
+        "default_value": "720",
+        "min": "30",
+        "max": "65535",
+        "parameter_name": "FOTA WEB Period",
+        "value": "Number"
+      },
+      {
         "parameter_id": "13003",
         "parameter_type": "Uint8",
         "default_value": "1",
@@ -443,6 +518,15 @@
           "0 – Disable",
           "1 – Enable"
         ]
+      },
+      {
+        "parameter_id": "3001",
+        "parameter_type": "Char",
+        "default_value": "\"\"",
+        "min": "0",
+        "max": "16",
+        "parameter_name": "Data Send Number",
+        "value": "String"
       }
     ],
     [
@@ -463,6 +547,15 @@
         "max": "5",
         "parameter_name": "Password",
         "value": "String"
+      },
+      {
+        "parameter_id": "3006",
+        "parameter_type": "Uint16",
+        "default_value": "UTC+00:00",
+        "min": "UTC-12:00",
+        "max": "UTC+13:00",
+        "parameter_name": "SMS event Time Zone",
+        "value": "Time zone"
       }
     ],
     [
@@ -477,7 +570,8 @@
           "0 – Do nothing",
           "1 – Hangup",
           "2 – Report position",
-          "3 – Spy call"
+          "3 – Spy call",
+          "4 – Auto answer"
         ]
       }
     ],
@@ -499,10 +593,39 @@
           "6 – DIN2 and Crash event",
           "7 – DIN1, DIN2 and Crash event"
         ]
+      },
+      {
+        "parameter_id": "3008",
+        "parameter_type": "Uint8",
+        "default_value": "0",
+        "min": "0",
+        "max": "10",
+        "parameter_name": "GSM number index",
+        "value": "GSM number"
       }
     ],
-    [],
-    []
+    [
+      {
+        "parameter_id": "4000-4199",
+        "parameter_type": "Char",
+        "default_value": "\"\"",
+        "min": "0",
+        "max": "16",
+        "parameter_name": "Authorized number",
+        "value": "String"
+      }
+    ],
+    [
+      {
+        "parameter_id": "6000-6009",
+        "parameter_type": "Char",
+        "default_value": "\"\"",
+        "min": "0",
+        "max": "16",
+        "parameter_name": "Predefined number",
+        "value": "String"
+      }
+    ]
   ],
   "GSM operators": [
     [
@@ -522,6 +645,15 @@
         "min": "0",
         "max": "999999",
         "parameter_name": "SIM2 roaming/home operator list",
+        "value": "Number"
+      },
+      {
+        "parameter_id": "5500-5549",
+        "parameter_type": "Uint32",
+        "default_value": "0",
+        "min": "0",
+        "max": "999999",
+        "parameter_name": "Operator blacklist",
         "value": "Number"
       }
     ]
@@ -544,6 +676,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10005",
+        "parameter_type": "Uint16",
+        "default_value": "120",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -588,6 +728,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10055",
+        "parameter_type": "Uint16",
+        "default_value": "120",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -608,6 +756,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10105",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -652,6 +808,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10155",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -672,6 +836,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10205",
+        "parameter_type": "Uint16",
+        "default_value": "120",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -716,6 +888,14 @@
         "min": "1",
         "max": "255",
         "parameter_name": "Min Saved Records"
+      },
+      {
+        "parameter_id": "10255",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "2592000",
+        "parameter_name": "Send Period"
       }
     ]
   ],
@@ -730,6 +910,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8034",
+        "parameter_type": "String",
+        "default_value": "\"Green Driving\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11000",
@@ -836,6 +1025,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8032",
+        "parameter_type": "String",
+        "default_value": "\"Overspeeding\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11100",
@@ -951,6 +1149,15 @@
           "1 – DOUT1",
           "2 – DOUT2"
         ]
+      },
+      {
+        "parameter_id": "11305",
+        "parameter_type": "Uint16",
+        "default_value": "60",
+        "min": "0",
+        "max": "65535",
+        "parameter_name": "Timeout",
+        "value": "Seconds"
       }
     ]
   ],
@@ -978,6 +1185,15 @@
         "parameter_id": "8140",
         "parameter_type": "String",
         "default_value": "\"Immobilizer\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
+      },
+      {
+        "parameter_id": "8268",
+        "parameter_type": "String",
+        "default_value": "\"Blood\" Alcohol Content\"",
         "min": "0",
         "max": "160",
         "parameter_name": "Sms text",
@@ -1106,6 +1322,15 @@
           "2 – DIN 2",
           "3 – DIN 3"
         ]
+      },
+      {
+        "parameter_id": "12002",
+        "parameter_type": "Int32",
+        "default_value": "5",
+        "min": "0",
+        "max": "2147483647",
+        "parameter_name": "Duration timeout",
+        "value": "Seconds"
       }
     ]
   ],
@@ -1118,7 +1343,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Digital Output control",
-        "value": "0 - Normal"
+        "value": [
+          "0 - Normal",
+          "1 - Inverted"
+        ]
       }
     ]
   ],
@@ -1166,7 +1394,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Depend on ignition",
-        "value": "0 - Disabled"
+        "value": [
+          "0 - Disabled",
+          "1 - Enabled"
+        ]
       }
     ]
   ],
@@ -1181,6 +1412,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8031",
+        "parameter_type": "String",
+        "default_value": "\"Trip\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11800",
@@ -1258,7 +1498,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Remember iButton",
-        "value": "0 – Disable"
+        "value": [
+          "0 – Disable",
+          "1 – Enable"
+        ]
       }
     ]
   ],
@@ -1276,6 +1519,15 @@
           "1 – OBD",
           "2 – LVCAN"
         ]
+      },
+      {
+        "parameter_id": "11807",
+        "parameter_type": "Uint32",
+        "default_value": "0",
+        "min": "0",
+        "max": "4294967",
+        "parameter_name": "Odometer Value",
+        "value": "Kilometer"
       }
     ]
   ],
@@ -1356,7 +1608,10 @@
         "min": "0",
         "max": "1",
         "parameter_name": "Trigger Type",
-        "value": "0 – External"
+        "value": [
+          "0 – External",
+          "1 – Weekly Schedule"
+        ]
       },
       {
         "parameter_id": "11850",
@@ -1375,7 +1630,17 @@
     ]
   ],
   "Weekly Schedule parameters": [
-    []
+    [
+      {
+        "parameter_id": "11839",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "-720",
+        "max": "840",
+        "parameter_name": "Time Zone",
+        "value": "GMT+"
+      }
+    ]
   ],
   "Daylight saving scenario parameters": [
     [
@@ -1507,6 +1772,15 @@
           "5 – Saturday",
           "6 – Sunday"
         ]
+      },
+      {
+        "parameter_id": "11848",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "1140",
+        "parameter_name": "End on DLS* Time",
+        "value": "Minutes"
       }
     ]
   ],
@@ -1712,6 +1986,15 @@
         "max": "1140",
         "parameter_name": "Weekly Schedule Sunday Start Time",
         "value": "Minutes"
+      },
+      {
+        "parameter_id": "11838",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "1140",
+        "parameter_name": "Weekly Schedule Sunday End Time",
+        "value": "Minutes"
       }
     ]
   ],
@@ -1725,6 +2008,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8030",
+        "parameter_type": "String",
+        "default_value": "\"AutoGeofence\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "20000",
@@ -1811,6 +2103,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8025",
+        "parameter_type": "String",
+        "default_value": "\"Geozone Zone #\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "SMS text",
+        "value": "Text"
       },
       {
         "parameter_id": "20100",
@@ -2773,6 +3074,23 @@
         "max_allowed_speed": "21071",
         "send_sms_to": "7114",
         "sms_text": "8114"
+      },
+      {
+        "zone_number": "50",
+        "priority": "21080",
+        "event_generating": "21081",
+        "eventual_records": "21082",
+        "frame_border": "21083",
+        "shape_type": "21084",
+        "radius": "21085",
+        "x_1": "21086",
+        "y_1": "21087",
+        "x_2": "21088",
+        "y_2": "21089",
+        "overspeeding": "21090",
+        "max_allowed_speed": "21091",
+        "send_sms_to": "7115",
+        "sms_text": "8115"
       }
     ]
   ],
@@ -2858,6 +3176,15 @@
         "max": "250",
         "parameter_name": "Higher speeds add",
         "value": "%"
+      },
+      {
+        "parameter_id": "11909",
+        "parameter_type": "Uint8",
+        "default_value": "50",
+        "min": "0",
+        "max": "100",
+        "parameter_name": "Highway consumption every km/h",
+        "value": "Value"
       }
     ]
   ],
@@ -2872,6 +3199,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8036",
+        "parameter_type": "String",
+        "default_value": "\"Unplug\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11500",
@@ -2923,6 +3259,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8035",
+        "parameter_type": "String",
+        "default_value": "\"Towing\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11600",
@@ -3018,6 +3363,15 @@
         "value": "Phone number"
       },
       {
+        "parameter_id": "8037",
+        "parameter_type": "String",
+        "default_value": "\"Crash\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
+      },
+      {
         "parameter_id": "11400",
         "parameter_type": "Uint8",
         "default_value": "0",
@@ -3073,6 +3427,15 @@
         "max": "10",
         "parameter_name": "Send SMS to",
         "value": "Phone number"
+      },
+      {
+        "parameter_id": "8033",
+        "parameter_type": "String",
+        "default_value": "\"Idling Event\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "Sms text",
+        "value": "Text"
       },
       {
         "parameter_id": "11200",
@@ -3238,6 +3601,15 @@
           "2 – OBDII",
           "3 – Data link"
         ]
+      },
+      {
+        "parameter_id": "830-834",
+        "parameter_type": "String",
+        "default_value": "-",
+        "min": "0",
+        "max": "12",
+        "parameter_name": "Authorized devices MAC list",
+        "value": "MAC list"
       }
     ],
     [
@@ -3266,6 +3638,15 @@
           "5 – 6",
           "6 – 7"
         ]
+      },
+      {
+        "parameter_id": "1111",
+        "parameter_type": "Uint8",
+        "default_value": "0",
+        "min": "0",
+        "max": "4",
+        "parameter_name": "BLE broadcasting service ID",
+        "value": "ID"
       }
     ]
   ],
@@ -3298,6 +3679,15 @@
         "max": "TextMaxLength=\"4\"",
         "parameter_name": "BLE broadcasting service ID",
         "value": "-"
+      },
+      {
+        "parameter_id": "1112",
+        "parameter_type": "Int8",
+        "default_value": "1",
+        "min": "0",
+        "max": "1",
+        "parameter_name": "BLE connection control",
+        "value": "0 - Prohibit 1 - Allow"
       },
       {
         "parameter_id": "1113",
@@ -3351,6 +3741,15 @@
         "max": "8",
         "parameter_name": "TZ-BT04/05/05B sensor ID",
         "value": "ID"
+      },
+      {
+        "parameter_id": "1202",
+        "parameter_type": "String",
+        "default_value": "0",
+        "min": "0",
+        "max": "12",
+        "parameter_name": "Efento sensor MAC",
+        "value": "MAC"
       }
     ]
   ],
@@ -3377,6 +3776,15 @@
         "max": "8",
         "parameter_name": "TZ-BT04/05/05B sensor ID",
         "value": "ID"
+      },
+      {
+        "parameter_id": "1252",
+        "parameter_type": "String",
+        "default_value": "0",
+        "min": "0",
+        "max": "12",
+        "parameter_name": "Efento sensor MAC",
+        "value": "MAC"
       }
     ]
   ],
@@ -3403,6 +3811,15 @@
         "max": "8",
         "parameter_name": "TZ-BT04/05/05B sensor ID",
         "value": "ID"
+      },
+      {
+        "parameter_id": "1302",
+        "parameter_type": "String",
+        "default_value": "0",
+        "min": "0",
+        "max": "12",
+        "parameter_name": "Efento sensor MAC",
+        "value": "MAC"
       }
     ]
   ],
@@ -3429,6 +3846,15 @@
         "max": "8",
         "parameter_name": "TZ-BT04/05/05B sensor ID",
         "value": "ID"
+      },
+      {
+        "parameter_id": "1352",
+        "parameter_type": "String",
+        "default_value": "0",
+        "min": "0",
+        "max": "12",
+        "parameter_name": "Efento sensor MAC",
+        "value": "MAC"
       }
     ]
   ],
@@ -3461,6 +3887,15 @@
         "max": "259200",
         "parameter_name": "Record Period on Move (s)",
         "value": "Seconds"
+      },
+      {
+        "parameter_id": "139",
+        "parameter_type": "Uint32",
+        "default_value": "60",
+        "min": "0",
+        "max": "259200",
+        "parameter_name": "Record Period on Stop (s)",
+        "value": "Seconds"
       }
     ],
     []
@@ -3474,11 +3909,29 @@
         "min": "5",
         "max": "60",
         "parameter_name": "Tracking period"
+      },
+      {
+        "parameter_id": "10991",
+        "parameter_type": "Uint16",
+        "default_value": "600",
+        "min": "300",
+        "max": "3600",
+        "parameter_name": "Tracking duration"
       }
     ]
   ],
   "iButton List": [
-    []
+    [
+      {
+        "parameter_id": "30000-33999",
+        "parameter_type": "Uint64",
+        "default_value": "0",
+        "min": "0",
+        "max": "0xFFFFFFFF",
+        "parameter_name": "iButton ID list",
+        "value": "ID"
+      }
+    ]
   ],
   "I/O parameters": [
     [
@@ -4380,6 +4833,14 @@
       },
       {
         "parameter_id": "8250",
+        "parameter_type": "String",
+        "default_value": "0",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "SMS Text"
+      },
+      {
+        "parameter_id": "8376",
         "parameter_type": "String",
         "default_value": "0",
         "min": "0",
@@ -6863,6 +7324,15 @@
         "value": "Phone number"
       },
       {
+        "parameter_id": "8038",
+        "parameter_type": "String",
+        "default_value": "\"Number of DTC\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "SMS text",
+        "value": "Text"
+      },
+      {
         "parameter_id": "40100",
         "parameter_type": "Uint8",
         "default_value": "0",
@@ -6952,6 +7422,15 @@
           "0 - Disable",
           "1 - Enable"
         ]
+      },
+      {
+        "parameter_id": "45002",
+        "parameter_type": "Uint16",
+        "default_value": "0",
+        "min": "0",
+        "max": "999",
+        "parameter_name": "Program number",
+        "value": "Value"
       }
     ],
     [
@@ -7033,6 +7512,15 @@
         "max": "65535",
         "parameter_name": "Averaging constant",
         "value": "Value"
+      },
+      {
+        "parameter_id": "81411",
+        "parameter_type": "String",
+        "default_value": "\"LVC Vehicle speed\"",
+        "min": "0",
+        "max": "160",
+        "parameter_name": "SMS text",
+        "value": "Text"
       }
     ],
     []
@@ -7048,7 +7536,8 @@
         "parameter_name": "External UART mode",
         "value": [
           "0 – Disable",
-          "1 – RS232"
+          "1 – RS232",
+          "2 – RS485"
         ]
       }
     ],
@@ -7108,7 +7597,8 @@
         "value": [
           "0 – Default",
           "1 – None",
-          "2 – Odd"
+          "2 – Odd",
+          "3 – Even"
         ]
       }
     ],
@@ -7130,6 +7620,15 @@
         "max": "255",
         "parameter_name": "Prefix 2",
         "value": "Number"
+      },
+      {
+        "parameter_id": "156",
+        "parameter_type": "Uint8",
+        "default_value": "0",
+        "min": "0",
+        "max": "255",
+        "parameter_name": "Prefix 3",
+        "value": "Number"
       }
     ],
     [
@@ -7143,7 +7642,8 @@
         "value": [
           "0 – No filter",
           "1 – Ping filter",
-          "2 – Unicode filter"
+          "2 – Unicode filter",
+          "3 – Ping and Unicode filters"
         ]
       }
     ],
@@ -7178,7 +7678,8 @@
           "4 – 14400",
           "5 – 19200",
           "6 – 38400",
-          "7 – 57600"
+          "7 – 57600",
+          "8 – 115200"
         ]
       }
     ],
@@ -7217,6 +7718,15 @@
         "min": "0",
         "max": "254",
         "parameter_name": "LLS 4 Address",
+        "value": "Number"
+      },
+      {
+        "parameter_id": "166",
+        "parameter_type": "Uint8",
+        "default_value": "0",
+        "min": "0",
+        "max": "254",
+        "parameter_name": "LLS 5 Address",
         "value": "Number"
       }
     ],

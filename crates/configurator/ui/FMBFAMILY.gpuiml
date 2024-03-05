@@ -1,0 +1,1023 @@
+<div class="flex size-full flex-col bg-[#ffffff] overflow-y-scroll" font="Roboto">
+  <div type="maintable" title="System parameters">
+    <div type="subtable">
+      <input type="checkbox" parameter_id="106" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Static navigation" />
+      <input type="select" options="0:After Position Fix,1:Always,2:After Time Sync" parameter_id="107" parameter_type="Uint8" default_value="2" min="0" max="2" parameter_name="Send/Save records without TS" />
+      <input type="checkbox" parameter_id="108" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="LED Indication" />
+      <input type="select" options="0:Undefined,1:Beidou only,2:Glonass only,3:Glonass and Beidou not allowed,4:Galileo only,5:Galileo and Beidou,6:Galileo and Glonass,7:Galileo, Glonass and Beidou not allowed,8:Gps only,9:Gps and Beidou,10:Gps and Glonass,11:Gps, Glonass and Beidou not allowed,12:Gps and Galileo,13:Gps, Galileo and Beidou,14:Gps, Galileo and Glonass,15:Gps, Galileo, Glonass and Beidou and not allowed" parameter_id="109" parameter_type="Uint8" default_value="10" min="1" max="15" parameter_name="GNSS source" />
+      <input type="select" options="0:On need,1:After ignition on" parameter_id="110" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Battery charge mode" />
+      <input type="select" options="1:Movement,2:Ignition,3:Movement and Ignition" parameter_id="112" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Static navigation source" />
+      <input type="select" options="0:Codec 8,1:Codec 8 Extended" parameter_id="113" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Data Protocol" />
+      <input type="select" options="0:GNSS,1:OBD / CAN" parameter_id="133" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Speed Source" />
+      <input type="select" options="0:DIN2/AIN1,1:Ground Sense" parameter_id="135" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Input mode" />
+      <input type="select" options="1:Ignition,2:Accelerometer,4:GNSS,8:CAN Speed" parameter_id="138" parameter_type="Uint8" default_value="0" min="0" max="8" parameter_name="Movement source" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Disable,1:GPS sleep,2:Deep sleep,3:Online Deep sleep,4:Ultra Deep sleep,6:Power Off sleep (only for FMB965)" parameter_id="102" parameter_type="Uint8" default_value="2" min="0" max="4" parameter_name="Sleep settings" />
+      <input type="number" parameter_id="103" parameter_type="Uint16" default_value="1" min="1" max="3000" parameter_name="Timeout" value="Minutes" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="1:DIN 1,2:Accelerometer,3:Digital Input or Accelerometer,4:Power Voltage,5:Digital Input or Power Voltage,6:Accelerometer or Power Voltage,7:Digital Input, Accelerometer, or Power Voltage,8:Engine RPM,9:Digital Input or Engine RPM,10:Accelerometer or Engine RPM,11:Digital Input, Accelerometer or Engine RPM,12:Power Voltage or Engine RPM,13:Digital Input, Power Voltage or Engine RPM,14:Accelerometer, Power Voltage or Engine RPM" parameter_id="101" parameter_type="Uint8" default_value="4" min="1" max="14" parameter_name="Ignition settings" />
+      <input type="number" parameter_id="104" parameter_type="Uint16" default_value="30000" min="0" max="30000" parameter_name="High voltage" value="mV" />
+      <input type="number" parameter_id="105" parameter_type="Uint16" default_value="13200" min="0" max="29999" parameter_name="Low voltage" value="mV" />
+    </div>
+    <div type="subtable">
+      <input type="number" parameter_id="19001" parameter_type="Uint16" default_value="5" min="1" max="60" parameter_name="Movement Start Delay" value="Seconds" />
+      <input type="number" parameter_id="19002" parameter_type="Uint16" default_value="60" min="5" max="300" parameter_name="Movement Stop Delay" value="Seconds" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Gps only,1:NITZ and NTP,2:NTP,3:NITZ" parameter_id="900" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Synchronization settings" />
+      <input type="number" parameter_id="901" parameter_type="Uint8" default_value="0" min="0" max="24" parameter_name="NTP Resync" value="Hours" />
+      <input type="text" parameter_id="902" parameter_type="Char" default_value="&quot;avl1.teltonika.lt&quot;" min="0" max="55" parameter_name="NTP server 1" value="String" />
+      <input type="text" parameter_id="903" parameter_type="Char" default_value="&quot;pool.ntp.org&quot;" min="0" max="55" parameter_name="NTP server 2" value="String" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:Once,2:Continuous" parameter_id="169" parameter_type="Uint8" default_value="2" min="0" max="2" parameter_name="Accelerometer Auto Calibration" />
+      <input type="select" options="0 Disabled,1 Enabled" parameter_id="170" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Gravity Filter" />
+    </div>
+  </div>
+  <div type="maintable" title="GPRS parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="1000" parameter_type="Uint32" default_value="300" min="30" max="259200" parameter_name="Open link timeout" value="Seconds" />
+      <input type="number" parameter_id="1001" parameter_type="Uint16" default_value="30" min="5" max="300" parameter_name="Response timeout" value="Seconds" />
+      <input type="select" options="0:Newest,1:Oldest" parameter_id="1002" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Sort by" />
+      <input type="number" parameter_id="1003" parameter_type="Uint16" default_value="0" min="0" max="300" parameter_name="Network ping timeout" value="Seconds" />
+    </div>
+    <div type="subtable">
+      <input type="checkbox" parameter_id="2000" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="GPRS context" />
+      <input type="text" parameter_id="2001" parameter_type="Char" default_value="&quot;&quot;" min="0" max="32" parameter_name="APN" value="String" />
+      <input type="text" parameter_id="2002" parameter_type="Char" default_value="&quot;&quot;" min="0" max="32" parameter_name="APN username" value="String" />
+      <input type="text" parameter_id="2003" parameter_type="Char" default_value="&quot;&quot;" min="0" max="32" parameter_name="APN password" value="String" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="2004" parameter_type="Char" default_value="&quot;&quot;" min="0" max="55" parameter_name="Domain" value="String" />
+      <input type="number" parameter_id="2005" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Port" value="Number" />
+      <input type="select" options="0:TCP,1:UDP" parameter_id="2006" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Protocol" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="2007" parameter_type="Char" default_value="&quot;&quot;" min="0" max="55" parameter_name="Backup Server Domain" value="String" />
+      <input type="number" parameter_id="2008" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Backup Server Port" value="Number" />
+      <input type="select" options="0:TCP,1:UDP" parameter_id="2009" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Backup Server Protocol" />
+      <input type="select" options="0:Disable,1:Backup,2:Duplicate,3:EGTS" parameter_id="2010" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Backup Server Mode" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="13000" parameter_type="Char" default_value="fm.teltonika.lt" min="0" max="55" parameter_name="FOTA WEB Domain" value="String" />
+      <input type="number" parameter_id="13001" parameter_type="Uint16" default_value="5000" min="0" max="65535" parameter_name="FOTA WEB Port" value="Number" />
+      <input type="number" parameter_id="13002" parameter_type="Uint16" default_value="720" min="30" max="65535" parameter_name="FOTA WEB Period" value="Number" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="13003" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="FOTA WEB Status" />
+    </div>
+  </div>
+  <div type="maintable" title="SMS/Call settings">
+    <div type="subtable">
+      <input type="checkbox" parameter_id="3000" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Allow SMS data sending" />
+      <input type="text" parameter_id="3001" parameter_type="Char" default_value="&quot;&quot;" min="0" max="16" parameter_name="Data Send Number" value="String" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="3003" parameter_type="Char" default_value="&quot;&quot;" min="0" max="5" parameter_name="Login" value="String" />
+      <input type="text" parameter_id="3004" parameter_type="Char" default_value="&quot;&quot;" min="0" max="5" parameter_name="Password" value="String" />
+      <input type="number" parameter_id="3006" parameter_type="Uint16" default_value="UTC+00:00" min="UTC-12:00" max="UTC+13:00" parameter_name="SMS event Time Zone" value="Time zone" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Do nothing,1:Hangup,2:Report position,3:Spy call,4:Auto answer" parameter_id="3005" parameter_type="Uint8" default_value="0" min="0" max="4" parameter_name="Incoming call action" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Disable,1:DIN1,2:Crash event,3:DIN1 and Crash event,4:DIN2,5:DIN1 and DIN2,6:DIN2 and Crash event,7:DIN1, DIN2 and Crash event" parameter_id="3007" parameter_type="Uint8" default_value="0" min="0" max="7 (3 for FMB125)" parameter_name="Outgoing call trigger" />
+      <input type="number" parameter_id="3008" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="GSM number index" value="GSM number" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="4000-4199" parameter_type="Char" default_value="&quot;&quot;" min="0" max="16" parameter_name="Authorized number" value="String" />
+    </div>
+    <div type="subtable">
+      <input type="text" parameter_id="6000-6009" parameter_type="Char" default_value="&quot;&quot;" min="0" max="16" parameter_name="Predefined number" value="String" />
+    </div>
+  </div>
+  <div type="maintable" title="GSM operators">
+    <div type="subtable">
+      <input type="number" parameter_id="5000-5049" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="SIM1 roaming operator list" value="Number" />
+      <input type="number" parameter_id="9500-9549" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="SIM2 roaming/home operator list" value="Number" />
+      <input type="number" parameter_id="5500-5549" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="Operator blacklist" value="Number" />
+    </div>
+  </div>
+  <div type="maintable" title="Data acquisition mode parameters">
+  </div>
+  <div type="maintable" title="Home Network GSM operator code &quot;Vehicle on STOP&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10000" parameter_type="Uint16" default_value="3600" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10004" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10005" parameter_type="Uint16" default_value="120" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Home Network GSM operator code &quot;Vehicle MOVING&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10050" parameter_type="Uint16" default_value="300" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10051" parameter_type="Uint16" default_value="100" min="0" max="65535" parameter_name="Min Distance" />
+      <input type="number" parameter_id="10052" parameter_type="Uint8" default_value="10" min="0" max="180" parameter_name="Min Angle" />
+      <input type="number" parameter_id="10053" parameter_type="Uint8" default_value="10" min="0" max="100" parameter_name="Min Speed Delta" />
+      <input type="number" parameter_id="10054" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10055" parameter_type="Uint16" default_value="120" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Roaming Network GSM operator code &quot;Vehicle on STOP&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10100" parameter_type="Uint16" default_value="3600" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10104" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10105" parameter_type="Uint16" default_value="0" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Roaming Network GSM operator code &quot;Vehicle MOVING&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10150" parameter_type="Uint16" default_value="300" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10151" parameter_type="Uint16" default_value="100" min="0" max="65535" parameter_name="Min Distance" />
+      <input type="number" parameter_id="10152" parameter_type="Uint8" default_value="10" min="0" max="180" parameter_name="Min Angle" />
+      <input type="number" parameter_id="10153" parameter_type="Uint8" default_value="10" min="0" max="100" parameter_name="Min Speed Delta" />
+      <input type="number" parameter_id="10154" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10155" parameter_type="Uint16" default_value="0" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Unknown Network GSM operator code &quot;Vehicle on STOP&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10200" parameter_type="Uint16" default_value="3600" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10204" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10205" parameter_type="Uint16" default_value="120" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Unknown Network GSM operator code &quot;Vehicle MOVING&quot; parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="10250" parameter_type="Uint16" default_value="300" min="0" max="2592000" parameter_name="Min Period" />
+      <input type="number" parameter_id="10251" parameter_type="Uint16" default_value="100" min="0" max="65535" parameter_name="Min Distance" />
+      <input type="number" parameter_id="10252" parameter_type="Uint8" default_value="10" min="0" max="180" parameter_name="Min Angle" />
+      <input type="number" parameter_id="10253" parameter_type="Uint8" default_value="10" min="0" max="100" parameter_name="Min Speed Delta" />
+      <input type="number" parameter_id="10254" parameter_type="Uint8" default_value="1" min="1" max="255" parameter_name="Min Saved Records" />
+      <input type="number" parameter_id="10255" parameter_type="Uint16" default_value="0" min="0" max="2592000" parameter_name="Send Period" />
+    </div>
+  </div>
+  <div type="maintable" title="Features parameters">
+  </div>
+  <div type="maintable" title="Green driving parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="7034" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8034" parameter_type="String" default_value="&quot;Green Driving&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11000" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="number" parameter_id="11001" parameter_type="Int32" default_value="200" min="100" max="5000" parameter_name="DOUT ON duration" value="Milliseconds" />
+      <input type="number" parameter_id="11002" parameter_type="Int32" default_value="200" min="0" max="5000" parameter_name="DOUT OFF duration" value="Milliseconds" />
+      <input type="select" options="0:None,1:DOUT 1,2:DOUT 2" parameter_id="11003" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Output control" />
+      <input type="number" parameter_id="11004" parameter_type="Uint8" default_value="2.5" min="0.5" max="10" parameter_name="Max acceleration" value="m/s2" />
+      <input type="number" parameter_id="11005" parameter_type="Uint8" default_value="2.7" min="0.5" max="10" parameter_name="Max braking" value="m/s2" />
+      <input type="number" parameter_id="11006" parameter_type="Uint8" default_value="3.4" min="0.5" max="10" parameter_name="Max cornering" value="m/s2" />
+      <input type="select" options="0:GPS,1:Accelerometer" parameter_id="11007" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Source" />
+      <input type="number" parameter_id="11008" parameter_type="uint8" default_value="0" min="0" max="1" parameter_name="Duration" value="Enable/Disable" />
+    </div>
+  </div>
+  <div type="maintable" title="Overspeeding scenario parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="7032" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8032" parameter_type="String" default_value="&quot;Overspeeding&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11100" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="number" parameter_id="11101" parameter_type="Int32" default_value="200" min="100" max="5000" parameter_name="DOUT ON duration" value="Milliseconds" />
+      <input type="number" parameter_id="11102" parameter_type="Int32" default_value="200" min="0" max="5000" parameter_name="DOUT OFF duration" value="Milliseconds" />
+      <input type="select" options="0:None,1:DOUT 1,2:DOUT 2" parameter_id="11103" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Output control" />
+      <input type="number" parameter_id="11104" parameter_type="Uint16" default_value="90" min="0" max="260" parameter_name="Max speed" value="km/h" />
+    </div>
+  </div>
+  <div type="maintable" title="Jamming scenario parameters">
+    <div type="subtable">
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11300" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="number" parameter_id="11301" parameter_type="Int32" default_value="200" min="100" max="5000" parameter_name="DOUT ON duration" value="Milliseconds" />
+      <input type="number" parameter_id="11302" parameter_type="Int32" default_value="200" min="0" max="5000" parameter_name="DOUT OFF duration" value="Milliseconds" />
+      <input type="checkbox" parameter_id="11303" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="select" options="0:None,1:DOUT1,2:DOUT2" parameter_id="11304" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Output control" />
+      <input type="number" parameter_id="11305" parameter_type="Uint16" default_value="60" min="0" max="65535" parameter_name="Timeout" value="Seconds" />
+    </div>
+  </div>
+  <div type="maintable" title="Immobilizer scenario parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="7140" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="7268" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8140" parameter_type="String" default_value="&quot;Immobilizer&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="number" parameter_id="8268" parameter_type="String" default_value="&quot;Blood&quot; Alcohol Content&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11700" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="checkbox" parameter_id="11701" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="select" options="0:Disable,1:Enable (DOUT 1),2:Enable (DOUT 2)" parameter_id="11702" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Output control" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="11703" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="iButton list check" />
+      <input type="checkbox" parameter_id="11708" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Blood Alcohol Content Event" />
+      <input type="number" parameter_id="60068" parameter_type="Uint16" default_value="30" min="1" max="65535" parameter_name="Ignition Off timeout" value="Seconds" />
+      <input type="checkbox" parameter_id="60076" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Alcotester Check" />
+      <input type="number" parameter_id="60077" parameter_type="Double" default_value="0.4" min="0" max="4" parameter_name="BAC Threshold" value="‰" />
+    </div>
+  </div>
+  <div type="maintable" title="DOUT control via call scenario parameters">
+    <div type="subtable">
+      <input type="select" options="0:None,1:DOUT 1,2:DOUT 2" parameter_id="12000" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Digital Output control" />
+      <input type="select" options="0:None,1:DIN 1,2:DIN 2,3:DIN 3" parameter_id="12001" parameter_type="Uint8" default_value="0" min="0" max="3 (1 for FMB125)" parameter_name="DOUT deactivation" />
+      <input type="number" parameter_id="12002" parameter_type="Int32" default_value="5" min="0" max="2147483647" parameter_name="Duration timeout" value="Seconds" />
+    </div>
+  </div>
+  <div type="maintable" title="DOUT 1 Output type">
+    <div type="subtable">
+      <input type="select" options="0:Normal,1:Inverted" parameter_id="60067" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output control" />
+    </div>
+  </div>
+  <div type="maintable" title="iButton read notification">
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:DOUT 1,2:DOUT 2 (FMB120),3:DOUT 3 (only for FMB130)" parameter_id="11704" parameter_type="Uint8_t" default_value="0" min="0" max="3" parameter_name="Digital Output control" />
+      <input type="number" parameter_id="11705" parameter_type="Uint16_t" default_value="200" min="100" max="50000" parameter_name="DOUT duration" value="Milliseconds" />
+      <input type="select" options="0:Disabled,1:Enabled" parameter_id="11706" parameter_type="Uint8_t" default_value="0" min="0" max="1" parameter_name="iButton notification list" />
+      <input type="select" options="0:Disabled,1:Enabled" parameter_id="11707" parameter_type="Uint8_t" default_value="0" min="0" max="1" parameter_name="Depend on ignition" />
+    </div>
+  </div>
+  <div type="maintable" title="Trip/Odometer">
+  </div>
+  <div type="maintable" title="Trip scenario parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="7031" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8031" parameter_type="String" default_value="&quot;Trip&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11800" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="checkbox" parameter_id="11801" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="select" options="0:Continuous,1:Between records" parameter_id="11802" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Mode" />
+      <input type="number" parameter_id="11803" parameter_type="Uint8" default_value="5" min="0" max="255" parameter_name="Start speed" value="km/h" />
+      <input type="number" parameter_id="11804" parameter_type="Uint16" default_value="60" min="0" max="65535" parameter_name="Ignition off timeout" value="Seconds" />
+    </div>
+  </div>
+  <div type="maintable" title="Advanced trip scenario parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="700" parameter_type="Uint16" default_value="100" min="0" max="65535" parameter_name="Eco score allowed events" value="0:Disable" />
+      <input type="checkbox" parameter_id="11805" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Remember iButton" />
+    </div>
+  </div>
+  <div type="maintable" title="Odometer parameters">
+    <div type="subtable">
+      <input type="select" options="0:GNSS,1:OBD,2:LVCAN" parameter_id="11806" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Calculation source" />
+      <input type="number" parameter_id="11807" parameter_type="Uint32" default_value="0" min="0" max="4294967" parameter_name="Odometer Value" value="Kilometer" />
+    </div>
+  </div>
+  <div type="maintable" title="Private/Business mode scenario parameters">
+    <div type="subtable">
+      <input type="select" options="16:BTApp,32:NBL-1 Button1,64:NBL-1 Button2,128:FMP100 Button,255:Enable All" parameter_id="11811" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Triggers" />
+      <input type="select" options="0:Normal,1:Data sent as Zero,2:Last good known position" parameter_id="11813" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="GPS Data Masking" />
+      <input type="checkbox" parameter_id="11814" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Eventual records" />
+      <input type="checkbox" parameter_id="11815" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Odometer calculation" />
+      <input type="select" options="0:Disable,1:Towing detection,2:Unplug detection,4:Crash detection,8:Autogeofence,15:Enable All" parameter_id="11816" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Deactivate by" />
+      <input type="select" options="0:External,1:Weekly Schedule" parameter_id="11849" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Trigger Type" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11850" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Private/Business Mode" />
+    </div>
+  </div>
+  <div type="maintable" title="Weekly Schedule parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="11839" parameter_type="Uint16" default_value="0" min="-720" max="840" parameter_name="Time Zone" value="GMT+" />
+    </div>
+  </div>
+  <div type="maintable" title="Daylight saving scenario parameters">
+    <div type="subtable">
+      <input type="checkbox" parameter_id="11840" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Daylight Saving" />
+      <input type="select" options="0:First,1:Second,2:Third,3:Fourth,4:Fifth/Last" parameter_id="11841" parameter_type="Uint8" default_value="0" min="0" max="4" parameter_name="Start on DLS* week" />
+      <input type="select" options="1:January,2:February,3:March,4:April,5:May,6:June,7:July,8:August,9:September,10:October,11:November,12:December" parameter_id="11842" parameter_type="Uint8" default_value="1" min="1" max="12" parameter_name="Start on DLS* Month" />
+      <input type="select" options="0:Monday,1:Tuesday,2:Wednesday,3:Thursday,4:Friday,5:Saturday,6:Sunday" parameter_id="11843" parameter_type="Uint8" default_value="0" min="0" max="6" parameter_name="Start on DLS* Day" />
+      <input type="number" parameter_id="11844" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Start on DLS* Time" value="Minutes" />
+      <input type="select" options="0:First,1:Second,2:Third,3:Fourth,4:Fifth/Last" parameter_id="11845" parameter_type="Uint8" default_value="0" min="0" max="4" parameter_name="End on DLS* Week" />
+      <input type="select" options="1:January,2:February,3:March,4:April,5:May,6:June,7:July,8:August,9:September,10:October,11:November,12:December" parameter_id="11846" parameter_type="Uint8" default_value="1" min="1" max="12" parameter_name="End on DLS* Month" />
+      <input type="select" options="0:Monday,1:Tuesday,2:Wednesday,3:Thursday,4:Friday,5:Saturday,6:Sunday" parameter_id="11847" parameter_type="Uint8" default_value="0" min="0" max="6" parameter_name="End on DLS* Day" />
+      <input type="number" parameter_id="11848" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="End on DLS* Time" value="Minutes" />
+    </div>
+  </div>
+  <div type="maintable" title="Weekly schedule scenario parameters">
+    <div type="subtable">
+      <input type="checkbox" parameter_id="11818" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Monday Status" />
+      <input type="number" parameter_id="11819" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Monday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11820" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Monday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11821" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Tuesday Status" />
+      <input type="number" parameter_id="11822" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Tuesday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11823" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Tuesday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11824" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Wednesday Status" />
+      <input type="number" parameter_id="11825" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Wednesday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11826" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Wednesday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11827" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Thursday Status" />
+      <input type="number" parameter_id="11828" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Thursday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11829" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Thursday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11830" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Friday Status" />
+      <input type="number" parameter_id="11831" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Friday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11832" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Friday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11833" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Saturday Status" />
+      <input type="number" parameter_id="11834" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Saturday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11835" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Saturday End Time" value="Minutes" />
+      <input type="checkbox" parameter_id="11836" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Weekly Schedule Sunday Status" />
+      <input type="number" parameter_id="11837" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Sunday Start Time" value="Minutes" />
+      <input type="number" parameter_id="11838" parameter_type="Uint16" default_value="0" min="0" max="1140" parameter_name="Weekly Schedule Sunday End Time" value="Minutes" />
+    </div>
+  </div>
+  <div type="maintable" title="AutoGeofencing scenario parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="7030" parameter_type="Uint64" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8030" parameter_type="String" default_value="&quot;AutoGeofence&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="20000" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Priority" />
+      <input type="select" options="0:On exiting zone,1:On entering zone,2:On both" parameter_id="20001" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="AutoGeofence event generating" />
+      <input type="checkbox" parameter_id="20002" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="number" parameter_id="20003" parameter_type="Uint16" default_value="60" min="0" max="65535" parameter_name="Activation timeout" value="Seconds" />
+      <input type="number" parameter_id="20004" parameter_type="Uint32" default_value="100" min="5" max="1000000" parameter_name="Radius" value="Value" />
+      <input type="select" options="0:Power voltage,1:Digital input 1,2:Engine RPM,3:Digital input 2,4:Digital input 3,5:iButton" parameter_id="20005" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="Deactivate by" />
+    </div>
+  </div>
+  <div type="maintable" title="Manual Geofence">
+    <div type="subtable">
+      <input type="number" parameter_id="7025" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8025" parameter_type="String" default_value="&quot;Geozone Zone #&quot;" min="0" max="160" parameter_name="SMS text" value="Text" />
+      <input type="select" options="0:Disabled,1:Low,2:High,3:Panic" parameter_id="20100" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Priority" />
+      <input type="select" options="0:No event,1:On exiting zone,2:On entering zone,3:On both" parameter_id="20101" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Operand" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="20102" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="number" parameter_id="20103" parameter_type="Uint32" default_value="1" min="0" max="1000000" parameter_name="Frame border" value="Border value" />
+      <input type="select" options="0:Circle,1:Rectangle" parameter_id="20104" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Shape type" />
+      <input type="number" parameter_id="20105" parameter_type="Uint32" default_value="5" min="0" max="1000000" parameter_name="Radius" value="Metres" />
+      <input type="number" parameter_id="20106" parameter_type="Double" default_value="0" min="-180" max="180" parameter_name="X1" value="Coordinate" />
+      <input type="number" parameter_id="20107" parameter_type="Double" default_value="0" min="-90" max="90" parameter_name="Y1" value="Coordinate" />
+      <input type="number" parameter_id="20108" parameter_type="Double" default_value="0" min="-180" max="180" parameter_name="X2" value="Coordinate" />
+      <input type="number" parameter_id="20109" parameter_type="Double" default_value="0" min="-90" max="90" parameter_name="Y2" value="Coordinate" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="20110" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Overspeeding" />
+      <input type="number" parameter_id="20111" parameter_type="Uint16" default_value="90" min="0" max="1000" parameter_name="Max allowed speed" value="km/h" />
+    </div>
+    <div type="subtable">
+      <input type="number" zone_number="1" priority="20100" event_generating="20101" eventual_records="20102" frame_border="20103" shape_type="20104" radius="20105" x_1="20106" y_1="20107" x_2="20108" y_2="20109" overspeeding="20110" max_allowed_speed="20111" send_sms_to="7025" sms_text="8025" />
+      <input type="number" zone_number="2" priority="20120" event_generating="20121" eventual_records="20122" frame_border="20123" shape_type="20124" radius="20125" x_1="20126" y_1="20127" x_2="20128" y_2="20129" overspeeding="20130" max_allowed_speed="20131" send_sms_to="7026" sms_text="8026" />
+      <input type="number" zone_number="3" priority="20140" event_generating="20141" eventual_records="20142" frame_border="20143" shape_type="20144" radius="20145" x_1="20146" y_1="20147" x_2="20148" y_2="20149" overspeeding="20150" max_allowed_speed="20151" send_sms_to="7027" sms_text="8027" />
+      <input type="number" zone_number="4" priority="20160" event_generating="20161" eventual_records="20162" frame_border="20163" shape_type="20164" radius="20165" x_1="20166" y_1="20167" x_2="20168" y_2="20169" overspeeding="20170" max_allowed_speed="20171" send_sms_to="7028" sms_text="8028" />
+      <input type="number" zone_number="5" priority="20180" event_generating="20181" eventual_records="20182" frame_border="20183" shape_type="20184" radius="20185" x_1="20186" y_1="20187" x_2="20188" y_2="20189" overspeeding="20190" max_allowed_speed="20191" send_sms_to="7029" sms_text="8029" />
+      <input type="number" zone_number="6" priority="20200" event_generating="20201" eventual_records="20202" frame_border="20203" shape_type="20204" radius="20205" x_1="20206" y_1="20207" x_2="20208" y_2="20209" overspeeding="20210" max_allowed_speed="20211" send_sms_to="7071" sms_text="8071" />
+      <input type="number" zone_number="7" priority="20220" event_generating="20221" eventual_records="20222" frame_border="20223" shape_type="20224" radius="20225" x_1="20226" y_1="20227" x_2="20228" y_2="20229" overspeeding="20230" max_allowed_speed="20231" send_sms_to="7072" sms_text="8072" />
+      <input type="number" zone_number="8" priority="20240" event_generating="20241" eventual_records="20242" frame_border="20243" shape_type="20244" radius="20245" x_1="20246" y_1="20247" x_2="20248" y_2="20249" overspeeding="20250" max_allowed_speed="20251" send_sms_to="7073" sms_text="8073" />
+      <input type="number" zone_number="9" priority="20260" event_generating="20261" eventual_records="20262" frame_border="20263" shape_type="20264" radius="20265" x_1="20266" y_1="20267" x_2="20268" y_2="20269" overspeeding="20270" max_allowed_speed="20271" send_sms_to="7074" sms_text="8074" />
+      <input type="number" zone_number="10" priority="20280" event_generating="20281" eventual_records="20282" frame_border="20283" shape_type="20284" radius="20285" x_1="20286" y_1="20287" x_2="20288" y_2="20289" overspeeding="20290" max_allowed_speed="20291" send_sms_to="7075" sms_text="8075" />
+      <input type="number" zone_number="11" priority="20300" event_generating="20301" eventual_records="20302" frame_border="20303" shape_type="20304" radius="20305" x_1="20306" y_1="20307" x_2="20308" y_2="20309" overspeeding="20310" max_allowed_speed="20311" send_sms_to="7076" sms_text="8076" />
+      <input type="number" zone_number="12" priority="20320" event_generating="20321" eventual_records="20322" frame_border="20323" shape_type="20324" radius="20325" x_1="20326" y_1="20327" x_2="20328" y_2="20329" overspeeding="20330" max_allowed_speed="20331" send_sms_to="7077" sms_text="8077" />
+      <input type="number" zone_number="13" priority="20340" event_generating="20341" eventual_records="20342" frame_border="20343" shape_type="20344" radius="20345" x_1="20346" y_1="20347" x_2="20348" y_2="20349" overspeeding="20350" max_allowed_speed="20351" send_sms_to="7078" sms_text="8078" />
+      <input type="number" zone_number="14" priority="20360" event_generating="20361" eventual_records="20362" frame_border="20363" shape_type="20364" radius="20365" x_1="20366" y_1="20367" x_2="20368" y_2="20369" overspeeding="20370" max_allowed_speed="20371" send_sms_to="7079" sms_text="8079" />
+      <input type="number" zone_number="15" priority="20380" event_generating="20381" eventual_records="20382" frame_border="20383" shape_type="20384" radius="20385" x_1="20386" y_1="20387" x_2="20388" y_2="20389" overspeeding="20390" max_allowed_speed="20391" send_sms_to="7080" sms_text="8080" />
+      <input type="number" zone_number="16" priority="20400" event_generating="20401" eventual_records="20402" frame_border="20403" shape_type="20404" radius="20405" x_1="20406" y_1="20407" x_2="20408" y_2="20409" overspeeding="20410" max_allowed_speed="20411" send_sms_to="7081" sms_text="8081" />
+      <input type="number" zone_number="17" priority="20420" event_generating="20421" eventual_records="20422" frame_border="20423" shape_type="20424" radius="20425" x_1="20426" y_1="20427" x_2="20428" y_2="20429" overspeeding="20430" max_allowed_speed="20431" send_sms_to="7082" sms_text="8082" />
+      <input type="number" zone_number="18" priority="20440" event_generating="20441" eventual_records="20442" frame_border="20443" shape_type="20444" radius="20445" x_1="20446" y_1="20447" x_2="20448" y_2="20449" overspeeding="20450" max_allowed_speed="20451" send_sms_to="7083" sms_text="8083" />
+      <input type="number" zone_number="19" priority="20460" event_generating="20461" eventual_records="20462" frame_border="20463" shape_type="20464" radius="20465" x_1="20466" y_1="20467" x_2="20468" y_2="20469" overspeeding="20470" max_allowed_speed="20471" send_sms_to="7084" sms_text="8084" />
+      <input type="number" zone_number="20" priority="20480" event_generating="20481" eventual_records="20482" frame_border="20483" shape_type="20484" radius="20485" x_1="20486" y_1="20487" x_2="20488" y_2="20489" overspeeding="20490" max_allowed_speed="20491" send_sms_to="7085" sms_text="8085" />
+      <input type="number" zone_number="21" priority="20500" event_generating="20501" eventual_records="20502" frame_border="20503" shape_type="20504" radius="20505" x_1="20506" y_1="20507" x_2="20508" y_2="20509" overspeeding="20510" max_allowed_speed="20511" send_sms_to="7086" sms_text="8086" />
+      <input type="number" zone_number="22" priority="20520" event_generating="20521" eventual_records="20522" frame_border="20523" shape_type="20524" radius="20525" x_1="20526" y_1="20527" x_2="20528" y_2="20529" overspeeding="20530" max_allowed_speed="20531" send_sms_to="7087" sms_text="8087" />
+      <input type="number" zone_number="23" priority="20540" event_generating="20541" eventual_records="20542" frame_border="20543" shape_type="20544" radius="20545" x_1="20546" y_1="20547" x_2="20548" y_2="20549" overspeeding="20550" max_allowed_speed="20551" send_sms_to="7088" sms_text="8088" />
+      <input type="number" zone_number="24" priority="20560" event_generating="20561" eventual_records="20562" frame_border="20563" shape_type="20564" radius="20565" x_1="20566" y_1="20567" x_2="20568" y_2="20569" overspeeding="20570" max_allowed_speed="20571" send_sms_to="7089" sms_text="8089" />
+      <input type="number" zone_number="25" priority="20580" event_generating="20581" eventual_records="20582" frame_border="20583" shape_type="20584" radius="20585" x_1="20586" y_1="20587" x_2="20588" y_2="20589" overspeeding="20590" max_allowed_speed="20591" send_sms_to="7090" sms_text="8090" />
+      <input type="number" zone_number="26" priority="20600" event_generating="20601" eventual_records="20602" frame_border="20603" shape_type="20604" radius="20605" x_1="20606" y_1="20607" x_2="20608" y_2="20609" overspeeding="20610" max_allowed_speed="20611" send_sms_to="7091" sms_text="8091" />
+      <input type="number" zone_number="27" priority="20620" event_generating="20621" eventual_records="20622" frame_border="20623" shape_type="20624" radius="20625" x_1="20626" y_1="20627" x_2="20628" y_2="20629" overspeeding="20630" max_allowed_speed="20631" send_sms_to="7092" sms_text="8092" />
+      <input type="number" zone_number="28" priority="20640" event_generating="20641" eventual_records="20642" frame_border="20643" shape_type="20644" radius="20645" x_1="20646" y_1="20647" x_2="20648" y_2="20649" overspeeding="20650" max_allowed_speed="20651" send_sms_to="7093" sms_text="8093" />
+      <input type="number" zone_number="29" priority="20660" event_generating="20661" eventual_records="20662" frame_border="20663" shape_type="20664" radius="20665" x_1="20666" y_1="20667" x_2="20668" y_2="20669" overspeeding="20670" max_allowed_speed="20671" send_sms_to="7094" sms_text="8094" />
+      <input type="number" zone_number="30" priority="20680" event_generating="20681" eventual_records="20682" frame_border="20683" shape_type="20684" radius="20685" x_1="20686" y_1="20687" x_2="20688" y_2="20689" overspeeding="20690" max_allowed_speed="20691" send_sms_to="7095" sms_text="8095" />
+      <input type="number" zone_number="31" priority="20700" event_generating="20701" eventual_records="20702" frame_border="20703" shape_type="20704" radius="20705" x_1="20706" y_1="20707" x_2="20708" y_2="20709" overspeeding="20710" max_allowed_speed="20711" send_sms_to="7096" sms_text="8096" />
+      <input type="number" zone_number="32" priority="20720" event_generating="20721" eventual_records="20722" frame_border="20723" shape_type="20724" radius="20725" x_1="20726" y_1="20727" x_2="20728" y_2="20729" overspeeding="20730" max_allowed_speed="20731" send_sms_to="7097" sms_text="8097" />
+      <input type="number" zone_number="33" priority="20740" event_generating="20741" eventual_records="20742" frame_border="20743" shape_type="20744" radius="20745" x_1="20746" y_1="20747" x_2="20748" y_2="20749" overspeeding="20750" max_allowed_speed="20751" send_sms_to="7098" sms_text="8098" />
+      <input type="number" zone_number="34" priority="20760" event_generating="20761" eventual_records="20762" frame_border="20763" shape_type="20764" radius="20765" x_1="20766" y_1="20767" x_2="20768" y_2="20769" overspeeding="20770" max_allowed_speed="20771" send_sms_to="7099" sms_text="8099" />
+      <input type="number" zone_number="35" priority="20780" event_generating="20781" eventual_records="20782" frame_border="20783" shape_type="20784" radius="20785" x_1="20786" y_1="20787" x_2="20788" y_2="20789" overspeeding="20790" max_allowed_speed="20791" send_sms_to="7100" sms_text="8100" />
+      <input type="number" zone_number="36" priority="20800" event_generating="20801" eventual_records="20802" frame_border="20803" shape_type="20804" radius="20805" x_1="20806" y_1="20807" x_2="20808" y_2="20809" overspeeding="20810" max_allowed_speed="20811" send_sms_to="7101" sms_text="8101" />
+      <input type="number" zone_number="37" priority="20820" event_generating="20821" eventual_records="20822" frame_border="20823" shape_type="20824" radius="20825" x_1="20826" y_1="20827" x_2="20828" y_2="20829" overspeeding="20830" max_allowed_speed="20831" send_sms_to="7102" sms_text="8102" />
+      <input type="number" zone_number="38" priority="20840" event_generating="20841" eventual_records="20842" frame_border="20843" shape_type="20844" radius="20845" x_1="20846" y_1="20847" x_2="20848" y_2="20849" overspeeding="20850" max_allowed_speed="20851" send_sms_to="7103" sms_text="8103" />
+      <input type="number" zone_number="39" priority="20860" event_generating="20861" eventual_records="20862" frame_border="20863" shape_type="20864" radius="20865" x_1="20866" y_1="20867" x_2="20868" y_2="20869" overspeeding="20870" max_allowed_speed="20871" send_sms_to="7104" sms_text="8104" />
+      <input type="number" zone_number="40" priority="20880" event_generating="20881" eventual_records="20882" frame_border="20883" shape_type="20884" radius="20885" x_1="20886" y_1="20887" x_2="20888" y_2="20889" overspeeding="20890" max_allowed_speed="20891" send_sms_to="7105" sms_text="8105" />
+      <input type="number" zone_number="41" priority="20900" event_generating="20901" eventual_records="20902" frame_border="20903" shape_type="20904" radius="20905" x_1="20906" y_1="20907" x_2="20908" y_2="20909" overspeeding="20910" max_allowed_speed="20911" send_sms_to="7106" sms_text="8106" />
+      <input type="number" zone_number="42" priority="20920" event_generating="20921" eventual_records="20922" frame_border="20923" shape_type="20924" radius="20925" x_1="20926" y_1="20927" x_2="20928" y_2="20929" overspeeding="20930" max_allowed_speed="20931" send_sms_to="7107" sms_text="8107" />
+      <input type="number" zone_number="43" priority="20940" event_generating="20941" eventual_records="20942" frame_border="20943" shape_type="20944" radius="20945" x_1="20946" y_1="20947" x_2="20948" y_2="20949" overspeeding="20950" max_allowed_speed="20951" send_sms_to="7108" sms_text="8108" />
+      <input type="number" zone_number="44" priority="20960" event_generating="20961" eventual_records="20962" frame_border="20963" shape_type="20964" radius="20965" x_1="20966" y_1="20967" x_2="20968" y_2="20969" overspeeding="20970" max_allowed_speed="20971" send_sms_to="7109" sms_text="8109" />
+      <input type="number" zone_number="45" priority="20980" event_generating="20981" eventual_records="20982" frame_border="20983" shape_type="20984" radius="20985" x_1="20986" y_1="20987" x_2="20988" y_2="20989" overspeeding="20990" max_allowed_speed="20991" send_sms_to="7110" sms_text="8110" />
+      <input type="number" zone_number="46" priority="21000" event_generating="21001" eventual_records="21002" frame_border="21003" shape_type="21004" radius="21005" x_1="21006" y_1="21007" x_2="21008" y_2="21009" overspeeding="21010" max_allowed_speed="21011" send_sms_to="7111" sms_text="8111" />
+      <input type="number" zone_number="47" priority="21020" event_generating="21021" eventual_records="21022" frame_border="21023" shape_type="21024" radius="21025" x_1="21026" y_1="21027" x_2="21028" y_2="21029" overspeeding="21030" max_allowed_speed="21031" send_sms_to="7112" sms_text="8112" />
+      <input type="number" zone_number="48" priority="21040" event_generating="21041" eventual_records="21042" frame_border="21043" shape_type="21044" radius="21045" x_1="21046" y_1="21047" x_2="21048" y_2="21049" overspeeding="21050" max_allowed_speed="21051" send_sms_to="7113" sms_text="8113" />
+      <input type="number" zone_number="49" priority="21060" event_generating="21061" eventual_records="21062" frame_border="21063" shape_type="21064" radius="21065" x_1="21066" y_1="21067" x_2="21068" y_2="21069" overspeeding="21070" max_allowed_speed="21071" send_sms_to="7114" sms_text="8114" />
+      <input type="number" zone_number="50" priority="21080" event_generating="21081" eventual_records="21082" frame_border="21083" shape_type="21084" radius="21085" x_1="21086" y_1="21087" x_2="21088" y_2="21089" overspeeding="21090" max_allowed_speed="21091" send_sms_to="7115" sms_text="8115" />
+    </div>
+  </div>
+  <div type="maintable" title="GPS Fuel counter">
+    <div type="subtable">
+      <input type="number" parameter_id="11900" parameter_type="Double" default_value="0" min="0" max="50" parameter_name="City consumption" value="L/100km" />
+      <input type="number" parameter_id="11901" parameter_type="Double" default_value="0" min="0" max="50" parameter_name="Highway consumption" value="L/100km" />
+      <input type="number" parameter_id="11902" parameter_type="Double" default_value="0" min="0" max="50" parameter_name="Average consumption" value="L/100km" />
+      <input type="number" parameter_id="11903" parameter_type="Uint8" default_value="30" min="0" max="250" parameter_name="City speed" value="km/h" />
+      <input type="number" parameter_id="11904" parameter_type="Uint8" default_value="90" min="0" max="250" parameter_name="Highway speed" value="km/h" />
+      <input type="number" parameter_id="11905" parameter_type="Uint8" default_value="60" min="0" max="250" parameter_name="Average speed" value="km/h" />
+      <input type="number" parameter_id="11906" parameter_type="Double" default_value="1" min="0.01" max="2" parameter_name="Correction coefficient" value="Coefficient" />
+      <input type="number" parameter_id="11907" parameter_type="Double" default_value="1" min="0" max="5" parameter_name="Fuel consumption on idling" value="L/h" />
+      <input type="number" parameter_id="11908" parameter_type="Uint8" default_value="20" min="0" max="250" parameter_name="Higher speeds add" value="%" />
+      <input type="number" parameter_id="11909" parameter_type="Uint8" default_value="50" min="0" max="100" parameter_name="Highway consumption every km/h" value="Value" />
+    </div>
+  </div>
+  <div type="maintable" title="Accelerometer features">
+  </div>
+  <div type="maintable" title="Unplug Detection">
+    <div type="subtable">
+      <input type="number" parameter_id="7036" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8036" parameter_type="String" default_value="&quot;Unplug&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11500" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario setting" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="11501" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="select" options="0:Simple,1:Advanced" parameter_id="11502" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Detection mode" />
+    </div>
+  </div>
+  <div type="maintable" title="Towing Detection">
+    <div type="subtable">
+      <input type="number" parameter_id="7035" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8035" parameter_type="String" default_value="&quot;Towing&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11600" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Priority" />
+      <input type="checkbox" parameter_id="11601" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="number" parameter_id="11602" parameter_type="Uint16" default_value="5" min="0" max="65535" parameter_name="Activation timeout" value="Minutes" />
+      <input type="number" parameter_id="11603" parameter_type="Uint8" default_value="0" min="0" max="60" parameter_name="Event timeout" value="Seconds" />
+      <input type="number" parameter_id="11604" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Make call to" value="Phone number" />
+      <input type="number" parameter_id="11605" parameter_type="Double" default_value="0.22" min="0.1" max="5" parameter_name="Threshold" value="mG" />
+      <input type="number" parameter_id="11606" parameter_type="Double" default_value="1" min="0.1" max="5" parameter_name="Angle" value="Degrees" />
+      <input type="number" parameter_id="11607" parameter_type="Uint16" default_value="1000" min="1" max="5000" parameter_name="Duration" value="Milliseconds" />
+    </div>
+  </div>
+  <div type="maintable" title="Crash Detection">
+    <div type="subtable">
+      <input type="number" parameter_id="7037" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8037" parameter_type="String" default_value="&quot;Crash&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11400" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario setting" />
+      <input type="number" parameter_id="11401" parameter_type="Uint8" default_value="5" min="0" max="1000" parameter_name="Duration" value="Milliseconds" />
+      <input type="number" parameter_id="11402" parameter_type="Uint16" default_value="1500" min="0" max="7900" parameter_name="Threshold" value="mG" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="11406" parameter_type="Int8" default_value="0" min="0" max="1" parameter_name="Crash trace" />
+    </div>
+  </div>
+  <div type="maintable" title="Excessive Idling">
+    <div type="subtable">
+      <input type="number" parameter_id="7033" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8033" parameter_type="String" default_value="&quot;Idling Event&quot;" min="0" max="160" parameter_name="Sms text" value="Text" />
+      <input type="select" options="0:Disable,1:Low priority,2:High priority,3:Panic priority" parameter_id="11200" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Scenario settings" />
+      <input type="number" parameter_id="11201" parameter_type="Int32" default_value="200" min="0" max="2147483647" parameter_name="DOUT ON duration" value="Milliseconds" />
+      <input type="number" parameter_id="11202" parameter_type="Int32" default_value="200" min="0" max="2147483647" parameter_name="DOUT OFF duration" value="Milliseconds" />
+      <input type="checkbox" parameter_id="11203" parameter_type="Uint8" default_value="1" min="0" max="1" parameter_name="Eventual records" />
+      <input type="select" options="0:None,1:DOUT 1,2:DOUT 2" parameter_id="11204" parameter_type="Uint8" default_value="0" min="0" max="2 (1 for FMB125)" parameter_name="Output control" />
+      <input type="number" parameter_id="11205" parameter_type="Uint8" default_value="5" min="0" max="3600" parameter_name="Time to stoped" value="Seconds" />
+      <input type="number" parameter_id="11206" parameter_type="Uint8" default_value="2" min="0" max="3600" parameter_name="Time to moving" value="Seconds" />
+    </div>
+  </div>
+  <div type="maintable" title="Bluetooth">
+    <div type="subtable">
+      <input type="select" options="0:Disable,1:Enable hidden,2:Enable visible" parameter_id="800" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Scenario settings" />
+      <input type="number" parameter_id="801" parameter_type="String" default_value="&quot;FMB1YX_(last 7 IMEI numbers)&quot;" min="0" max="16" parameter_name="Local name" value="ID" />
+      <input type="number" parameter_id="802" parameter_type="String" default_value="&quot;5555&quot;" min="0" max="4" parameter_name="Local PIN" value="PIN" />
+      <input type="select" options="0:PIN only,1:PIN and MAC,2:MAC only,3:None" parameter_id="803" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Security mode" />
+      <input type="number" parameter_id="804" parameter_type="String" default_value="0" min="0" max="12" parameter_name="External MAC" value="MAC" />
+      <input type="number" parameter_id="805" parameter_type="String" default_value="0" min="0" max="30" parameter_name="External name" value="ID" />
+      <input type="number" parameter_id="806" parameter_type="String" default_value="0" min="0" max="8" parameter_name="External PIN" value="PIN" />
+      <input type="select" options="0:None,1:Hands free,2:OBDII,3:Data link" parameter_id="807" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Security mode" />
+      <input type="number" parameter_id="830-834" parameter_type="String" default_value="-" min="0" max="12" parameter_name="Authorized devices MAC list" value="MAC list" />
+    </div>
+    <div type="subtable">
+      <input type="number" parameter_id="1100" parameter_type="Uint16" default_value="120" min="120" max="65535" parameter_name="TZ-BT04/05/05B Update frequency" value="Seconds" />
+      <input type="select" options="0:1,1:2,2:3,3:4,4:5,5:6,6:7" parameter_id="1110" parameter_type="Uint8" default_value="4" min="0" max="6" parameter_name="BT Power Level" />
+      <input type="number" parameter_id="1111" parameter_type="Uint8" default_value="0" min="0" max="4" parameter_name="BLE broadcasting service ID" value="ID" />
+    </div>
+  </div>
+  <div type="maintable" title="Bluetooth 4.0">
+  </div>
+  <div type="maintable" title="Common Settings">
+    <div type="subtable">
+      <input type="number" parameter_id="1100" parameter_type="Int32" default_value="120" min="30" max="65535" parameter_name="TZ-BT04 Update frequency" value="Seconds" />
+      <input type="select" parameter_id="1110" parameter_type="Int8" default_value="5" min="1" max="7" parameter_name="BTPower" value="Range in meters" options="1:&lt;0.5,2:0.5,3:11,4:13,5:15,6:27,7:50" />
+      <input type="number" parameter_id="1111" parameter_type="String" default_value="-" min="-" max="TextMaxLength=&quot;4&quot;" parameter_name="BLE broadcasting service ID" value="-" />
+      <input type="number" parameter_id="1112" parameter_type="Int8" default_value="1" min="0" max="1" parameter_name="BLE connection control" value="0:Prohibit 1:Allow" />
+      <input type="number" parameter_id="1113" parameter_type="Int32" default_value="60" min="5" max="120" parameter_name="BLE Scan duration" value="Seconds" />
+      <input type="number" parameter_id="1114" parameter_type="Int32" default_value="30" min="0" max="65535" parameter_name="Scan retries untill error" value="Seconds" />
+      <input type="number" parameter_id="1115" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Non Stop Scan" value="0:Disable 1:Enable" />
+    </div>
+  </div>
+  <div type="maintable" title="BLE functionalities Connection #1">
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:TZ-BT04/05/05B sensor,2:Efento sensor" parameter_id="1200" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Working mode" />
+      <input type="number" parameter_id="1201" parameter_type="Uint8" default_value="0" min="0" max="8" parameter_name="TZ-BT04/05/05B sensor ID" value="ID" />
+      <input type="number" parameter_id="1202" parameter_type="String" default_value="0" min="0" max="12" parameter_name="Efento sensor MAC" value="MAC" />
+    </div>
+  </div>
+  <div type="maintable" title="BLE functionalities Connection #2">
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:TZ-BT04/05/05B sensor,2:Efento sensor" parameter_id="1250" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Working mode" />
+      <input type="number" parameter_id="1251" parameter_type="Uint8" default_value="0" min="0" max="8" parameter_name="TZ-BT04/05/05B sensor ID" value="ID" />
+      <input type="number" parameter_id="1252" parameter_type="String" default_value="0" min="0" max="12" parameter_name="Efento sensor MAC" value="MAC" />
+    </div>
+  </div>
+  <div type="maintable" title="BLE functionalities Connection #3">
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:TZ-BT04/05/05B sensor,2:Efento sensor" parameter_id="1300" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Working mode" />
+      <input type="number" parameter_id="1301" parameter_type="Uint8" default_value="0" min="0" max="8" parameter_name="TZ-BT04/05/05B sensor ID" value="ID" />
+      <input type="number" parameter_id="1302" parameter_type="String" default_value="0" min="0" max="12" parameter_name="Efento sensor MAC" value="MAC" />
+    </div>
+  </div>
+  <div type="maintable" title="BLE functionalities Connection #4">
+    <div type="subtable">
+      <input type="select" options="0:Disabled,1:TZ-BT04/05/05B sensor,2:Efento sensor" parameter_id="1350" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Working mode" />
+      <input type="number" parameter_id="1351" parameter_type="Uint8" default_value="-" min="0" max="8" parameter_name="TZ-BT04/05/05B sensor ID" value="ID" />
+      <input type="number" parameter_id="1352" parameter_type="String" default_value="0" min="0" max="12" parameter_name="Efento sensor MAC" value="MAC" />
+    </div>
+  </div>
+  <div type="maintable" title="Beacon List Parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="134" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="2:Configured" undefined="Beacon Detection" value="0:Disabled 1:All" />
+      <input type="number" parameter_id="136" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Beacon Record" value="0:Eventual 1:Periodic" />
+      <input type="number" parameter_id="137" parameter_type="Uint32" default_value="60" min="0" max="259200" parameter_name="Record Period on Move (s)" value="Seconds" />
+      <input type="number" parameter_id="139" parameter_type="Uint32" default_value="60" min="0" max="259200" parameter_name="Record Period on Stop (s)" value="Seconds" />
+    </div>
+    <div type="subtable">
+    </div>
+  </div>
+  <div type="maintable" title="Tracking on Demand">
+    <div type="subtable">
+      <input type="number" parameter_id="10990" parameter_type="Uint8" default_value="10" min="5" max="60" parameter_name="Tracking period" />
+      <input type="number" parameter_id="10991" parameter_type="Uint16" default_value="600" min="300" max="3600" parameter_name="Tracking duration" />
+    </div>
+  </div>
+  <div type="maintable" title="iButton List">
+    <div type="subtable">
+      <input type="number" parameter_id="30000-33999" parameter_type="Uint64" default_value="0" min="0" max="0xFFFFFFFF" parameter_name="iButton ID list" value="ID" />
+    </div>
+  </div>
+  <div type="maintable" title="I/O parameters">
+    <div type="subtable">
+      <input type="number" parameter_id="5061" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GNSS PDOP Operand" />
+      <input type="number" parameter_id="5062" parameter_type="Uint16" default_value="0" min="0" max="1000" parameter_name="GNSS PDOP High level" />
+      <input type="number" parameter_id="5063" parameter_type="Uint16" default_value="0" min="0" max="1000" parameter_name="GNSS PDOP Low level" />
+      <input type="number" parameter_id="5064" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="GNSS PDOP Event only" />
+      <input type="number" parameter_id="5065" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="GNSS PDOP Average" />
+      <input type="number" parameter_id="7000" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7001" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7002" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7003" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7004" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7005" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7006" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7007" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7008" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7009" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7010" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7011" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7012" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7013" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7014" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7015" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7016" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7017" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7018" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7019" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7020" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7021" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7022" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7023" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7024" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7069" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7070" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7116" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="select" options="," parameter_id="7117" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7119" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7120" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7121" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7122" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7123" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7124" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7125" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7126" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7127" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7128" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7129" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7130" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7131" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7132" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7133" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7134" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7135" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7136" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7137" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7138" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7139" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7220" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7243" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7250" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="7376" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS" />
+      <input type="number" parameter_id="8000" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8001" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8002" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8003" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8004" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8005" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8006" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8007" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8008" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8009" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8010" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8011" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8012" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8013" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8014" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8015" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8016" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8017" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8018" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8019" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8020" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8021" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8022" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8023" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8024" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8069" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8070" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8116" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="select" options="," parameter_id="8117" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8119" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8120" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8121" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8122" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8123" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8124" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8125" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8126" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8127" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8128" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8129" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8130" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8131" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8132" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8133" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8134" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8135" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8136" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8137" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8138" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8139" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8220" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8243" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8250" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="8376" parameter_type="String" default_value="0" min="0" max="160" parameter_name="SMS Text" />
+      <input type="number" parameter_id="50000" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Ignition Priority" />
+      <input type="number" parameter_id="50001" parameter_type="Uint8" default_value="5" min="0" max="6" parameter_name="Ignition Operand" />
+      <input type="number" parameter_id="50002" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Ignition High level" />
+      <input type="number" parameter_id="50003" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Ignition Low level" />
+      <input type="number" parameter_id="50004" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Ignition Event only" />
+      <input type="number" parameter_id="50005" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="Ignition Average" />
+      <input type="number" parameter_id="50010" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Movement Priority" />
+      <input type="number" parameter_id="50011" parameter_type="Uint8" default_value="5" min="0" max="6" parameter_name="Movement Operand" />
+      <input type="number" parameter_id="50012" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Movement High level" />
+      <input type="number" parameter_id="50013" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Movement Low level" />
+      <input type="number" parameter_id="50014" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Movement Event only" />
+      <input type="number" parameter_id="50015" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Movement Average" />
+      <input type="number" parameter_id="50020" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Data Mode Priority" />
+      <input type="number" parameter_id="50021" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Data Mode Operand" />
+      <input type="number" parameter_id="50022" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="Data Mode High level" />
+      <input type="number" parameter_id="50023" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="Data Mode Low level" />
+      <input type="number" parameter_id="50024" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Data Mode Event only" />
+      <input type="number" parameter_id="50030" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="GSM Signal Priority" />
+      <input type="number" parameter_id="50031" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GSM Signal Operand" />
+      <input type="number" parameter_id="50032" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="GSM Signal High level" />
+      <input type="number" parameter_id="50033" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="GSM Signal Low level" />
+      <input type="number" parameter_id="50034" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="GSM Signal Event only" />
+      <input type="number" parameter_id="50035" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="GSM Signal Average" />
+      <input type="number" parameter_id="50040" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Deep Sleep Priority" />
+      <input type="number" parameter_id="50041" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Deep Sleep Operand" />
+      <input type="number" parameter_id="50042" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Deep Sleep High level" />
+      <input type="number" parameter_id="50043" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="Deep Sleep Low level" />
+      <input type="number" parameter_id="50044" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Deep Sleep Event only" />
+      <input type="number" parameter_id="50050" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="GNSS Status Priority" />
+      <input type="number" parameter_id="50051" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GNSS Status Operand" />
+      <input type="number" parameter_id="50052" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="GNSS Status High level" />
+      <input type="select" options="," parameter_id="50053" parameter_type="Uint8" default_value="0" min="0" max="5" parameter_name="GNSS Status Low level" />
+      <input type="number" parameter_id="50060" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="GNSS PDOP Priority" />
+      <input type="number" parameter_id="50070" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="GNSS HDOP Priority" />
+      <input type="number" parameter_id="50071" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GNSS HDOP Operand" />
+      <input type="number" parameter_id="50072" parameter_type="Uint16" default_value="0" min="0" max="1000" parameter_name="GNSS HDOP High level" />
+      <input type="number" parameter_id="50073" parameter_type="Uint16" default_value="0" min="0" max="1000" parameter_name="GNSS HDOP Low level" />
+      <input type="number" parameter_id="50074" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="GNSS HDOP Event only" />
+      <input type="number" parameter_id="50075" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="GNSS HDOP Average" />
+      <input type="number" parameter_id="50080" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="External Voltage Priority" />
+      <input type="number" parameter_id="50081" parameter_type="Uint8" default_value="6" min="0" max="6" parameter_name="External Voltage Operand" />
+      <input type="number" parameter_id="50082" parameter_type="Uint16" default_value="1000" min="0" max="60000" parameter_name="External Voltage High level" />
+      <input type="number" parameter_id="50083" parameter_type="Uint16" default_value="0" min="0" max="60000" parameter_name="External Voltage Low level" />
+      <input type="number" parameter_id="50084" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="External Voltage Event only" />
+      <input type="number" parameter_id="50085" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="External Voltage Average" />
+      <input type="number" parameter_id="50090" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Speed Priority" />
+      <input type="number" parameter_id="50091" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Speed Operand" />
+      <input type="number" parameter_id="50092" parameter_type="Uint16" default_value="0" min="0" max="300" parameter_name="Speed High level" />
+      <input type="number" parameter_id="50093" parameter_type="Uint16" default_value="0" min="0" max="300" parameter_name="Speed Low level" />
+      <input type="number" parameter_id="50094" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Speed Event only" />
+      <input type="number" parameter_id="50095" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Speed Average" />
+      <input type="number" parameter_id="50100" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="GSM Cell ID Priority" />
+      <input type="number" parameter_id="50101" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GSM Cell ID Operand" />
+      <input type="number" parameter_id="50102" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="GSM Cell ID High level" />
+      <input type="number" parameter_id="50103" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="GSM Cell ID Low level" />
+      <input type="number" parameter_id="50104" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="GSM Cell ID Event only" />
+      <input type="number" parameter_id="50110" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="GSM Area Code Priority" />
+      <input type="number" parameter_id="50111" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="GSM Area Code Operand" />
+      <input type="number" parameter_id="50112" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="GSM Area Code High level" />
+      <input type="number" parameter_id="50113" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="GSM Area Code Low level" />
+      <input type="number" parameter_id="50114" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="GSM Area Code Event only" />
+      <input type="number" parameter_id="50120" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Battery Voltage Priority" />
+      <input type="number" parameter_id="50121" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Battery Voltage Operand" />
+      <input type="number" parameter_id="50122" parameter_type="Uint16" default_value="0" min="0" max="5000" parameter_name="Battery Voltage High level" />
+      <input type="number" parameter_id="50123" parameter_type="Uint16" default_value="0" min="0" max="5000" parameter_name="Battery Voltage Low level" />
+      <input type="number" parameter_id="50124" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Battery Voltage Event only" />
+      <input type="number" parameter_id="50125" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Battery Voltage Average" />
+      <input type="number" parameter_id="50130" parameter_type="Uint8" default_value="1" min="0" max="3" parameter_name="Battery Current Priority" />
+      <input type="number" parameter_id="50131" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Battery Current Operand" />
+      <input type="number" parameter_id="50132" parameter_type="Uint16" default_value="0" min="0" max="5000" parameter_name="Battery Current High level" />
+      <input type="number" parameter_id="50133" parameter_type="Uint16" default_value="0" min="0" max="5000" parameter_name="Battery Current Low level" />
+      <input type="number" parameter_id="50134" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Battery Current Event only" />
+      <input type="number" parameter_id="50135" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Battery Current Average" />
+      <input type="number" parameter_id="50140" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Active GSM Operator Priority" />
+      <input type="number" parameter_id="50141" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Active GSM Operator Operand" />
+      <input type="number" parameter_id="50142" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="Active GSM Operator High level" />
+      <input type="number" parameter_id="50143" parameter_type="Uint32" default_value="0" min="0" max="999999" parameter_name="Active GSM Operator Low level" />
+      <input type="number" parameter_id="50144" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Active GSM Operator Event only" />
+      <input type="number" parameter_id="50150" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Trip Odometer Priority" />
+      <input type="number" parameter_id="50151" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Trip Odometer Operand" />
+      <input type="number" parameter_id="50152" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Trip Odometer High level" />
+      <input type="number" parameter_id="50153" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Trip Odometer Low level" />
+      <input type="number" parameter_id="50154" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Trip Odometer Event only" />
+      <input type="number" parameter_id="50160" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Total Odometer Priority" />
+      <input type="number" parameter_id="50161" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Total Odometer Operand" />
+      <input type="number" parameter_id="50162" parameter_type="Uint32" default_value="0" min="0" max="10000000" parameter_name="Total Odometer High level" />
+      <input type="number" parameter_id="50163" parameter_type="Uint32" default_value="0" min="0" max="10000000" parameter_name="Total Odometer Low level" />
+      <input type="number" parameter_id="50164" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Total Odometer Event only" />
+      <input type="number" parameter_id="50170" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Digital Input 1 Priority" />
+      <input type="number" parameter_id="50171" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Digital Input 1 Operand" />
+      <input type="number" parameter_id="50172" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 1 High level" />
+      <input type="number" parameter_id="50173" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 1 Low level" />
+      <input type="number" parameter_id="50174" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 1 Event only" />
+      <input type="number" parameter_id="50175" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Digital Input 1 Average" />
+      <input type="number" parameter_id="50180" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Analog Input 1 Priority" />
+      <input type="number" parameter_id="50181" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Analog Input 1 Operand" />
+      <input type="number" parameter_id="50182" parameter_type="Uint16" default_value="0" min="0" max="30000" parameter_name="Analog Input 1 High level" />
+      <input type="number" parameter_id="50183" parameter_type="Uint16" default_value="0" min="0" max="30000" parameter_name="Analog Input 1 Low level" />
+      <input type="number" parameter_id="50184" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Analog Input 1 Event only" />
+      <input type="number" parameter_id="50185" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="Analog Input 1 Average" />
+      <input type="number" parameter_id="50190" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Digital Output 1 Priority" />
+      <input type="number" parameter_id="50191" parameter_type="Uint8" default_value="0" min="0" max="6" parameter_name="Digital Output 1 Operand" />
+      <input type="number" parameter_id="50192" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 1 High level" />
+      <input type="number" parameter_id="50193" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 1 Low level" />
+      <input type="number" parameter_id="50194" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 1 Event only" />
+      <input type="number" parameter_id="50195" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Digital Output 1 Average" />
+      <input type="number" parameter_id="50200" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Fuel Used GPS Priority" />
+      <input type="number" parameter_id="50201" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Fuel Used GPS Operand" />
+      <input type="number" parameter_id="50202" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Fuel Used GPS High level" />
+      <input type="number" parameter_id="50203" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Fuel Used GPS Low level" />
+      <input type="number" parameter_id="50204" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Fuel Used GPS Event only" />
+      <input type="number" parameter_id="50205" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Fuel Used GPS Average" />
+      <input type="number" parameter_id="50210" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Fuel Rate GPS Priority" />
+      <input type="number" parameter_id="50211" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Fuel Rate GPS Operand" />
+      <input type="number" parameter_id="50212" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Fuel Rate GPS High level" />
+      <input type="number" parameter_id="50213" parameter_type="Uint32" default_value="0" min="0" max="1000000" parameter_name="Fuel Rate GPS Low level" />
+      <input type="number" parameter_id="50214" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Fuel Rate GPS Event only" />
+      <input type="number" parameter_id="50215" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Fuel Rate GPS Average" />
+      <input type="number" parameter_id="50220" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Axis X Priority" />
+      <input type="number" parameter_id="50221" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Axis X Operand" />
+      <input type="number" parameter_id="50222" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis X High level" />
+      <input type="number" parameter_id="50223" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis X Low level" />
+      <input type="number" parameter_id="50224" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Axis X Event only" />
+      <input type="number" parameter_id="50225" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Axis X Average" />
+      <input type="number" parameter_id="50230" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Axis Y Priority" />
+      <input type="number" parameter_id="50231" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Axis Y Operand" />
+      <input type="number" parameter_id="50232" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis Y High level" />
+      <input type="number" parameter_id="50233" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis Y Low level" />
+      <input type="number" parameter_id="50234" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Axis Y Event only" />
+      <input type="number" parameter_id="50235" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Axis Y Average" />
+      <input type="number" parameter_id="50240" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Axis Z Priority" />
+      <input type="number" parameter_id="50241" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Axis Z Operand" />
+      <input type="number" parameter_id="50242" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis Z High level" />
+      <input type="number" parameter_id="50243" parameter_type="Uint16" default_value="0" min="-8000" max="8000" parameter_name="Axis Z Low level" />
+      <input type="number" parameter_id="50244" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Axis Z Event only" />
+      <input type="number" parameter_id="50245" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Axis Z Average" />
+      <input type="number" parameter_id="50250" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="ICCID Priority" />
+      <input type="number" parameter_id="50251" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="ICCID Operand" />
+      <input type="number" parameter_id="50254" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="ICCID Event only" />
+      <input type="number" parameter_id="50260" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="SD Status Priority" />
+      <input type="number" parameter_id="50261" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="SD Status Operand" />
+      <input type="number" parameter_id="50262" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="SD Status High level" />
+      <input type="number" parameter_id="50263" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="SD Status Low level" />
+      <input type="number" parameter_id="50270" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Digital Input 2 Priority" />
+      <input type="number" parameter_id="50271" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Digital Input 2 Operand" />
+      <input type="number" parameter_id="50272" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 2 High level" />
+      <input type="number" parameter_id="50273" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 2 Low level" />
+      <input type="number" parameter_id="50274" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 2 Event only" />
+      <input type="number" parameter_id="50275" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Digital Input 2 Average" />
+      <input type="number" parameter_id="50280" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Digital Input 3 Priority" />
+      <input type="number" parameter_id="50281" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Digital Input 3 Operand" />
+      <input type="number" parameter_id="50282" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 3 High level" />
+      <input type="number" parameter_id="50283" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 3 Low level" />
+      <input type="number" parameter_id="50284" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Input 3 Event only" />
+      <input type="number" parameter_id="50285" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Digital Input 3 Average" />
+      <input type="number" parameter_id="50290" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Analog Input 2 Priority" />
+      <input type="number" parameter_id="50291" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Analog Input 2 Operand" />
+      <input type="number" parameter_id="50292" parameter_type="Uint16" default_value="0" min="0" max="30000" parameter_name="Analog Input 2 High level" />
+      <input type="number" parameter_id="50293" parameter_type="Uint16" default_value="0" min="0" max="30000" parameter_name="Analog Input 2 Low level" />
+      <input type="number" parameter_id="50294" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Analog Input 2 Event only" />
+      <input type="number" parameter_id="50295" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Analog Input 2 Average" />
+      <input type="number" parameter_id="50300" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Digital Output 2 Priority" />
+      <input type="number" parameter_id="50301" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Digital Output 2 Operand" />
+      <input type="number" parameter_id="50302" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 2 Hight level" />
+      <input type="number" parameter_id="50303" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 2 Low level" />
+      <input type="number" parameter_id="50304" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Digital Output 2 Event only" />
+      <input type="number" parameter_id="50305" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Digital Output 2 Average" />
+      <input type="number" parameter_id="50310" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature 1 Priority" />
+      <input type="number" parameter_id="50311" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature 1 Operand" />
+      <input type="number" parameter_id="50312" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 1 High level" />
+      <input type="number" parameter_id="50313" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 1 Low level" />
+      <input type="number" parameter_id="50314" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature 1 Event only" />
+      <input type="number" parameter_id="50315" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature 1 Average" />
+      <input type="number" parameter_id="50320" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature 2 Priority" />
+      <input type="number" parameter_id="50321" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature 2 Operand" />
+      <input type="number" parameter_id="50322" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 2 High level" />
+      <input type="number" parameter_id="50323" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 2 Low level" />
+      <input type="number" parameter_id="50324" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature 2 Event only" />
+      <input type="number" parameter_id="50325" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature 2 Average" />
+      <input type="number" parameter_id="50330" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature 3 Priority" />
+      <input type="number" parameter_id="50331" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature 3 Operand" />
+      <input type="number" parameter_id="50332" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 3 High level" />
+      <input type="number" parameter_id="50333" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 3 Low level" />
+      <input type="number" parameter_id="50334" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature 3 Event only" />
+      <input type="number" parameter_id="50335" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature 3 Average" />
+      <input type="number" parameter_id="50340" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature 4 Priority" />
+      <input type="number" parameter_id="50341" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature 4 Operand" />
+      <input type="number" parameter_id="50342" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 4 High level" />
+      <input type="number" parameter_id="50343" parameter_type="Int8" default_value="0" min="-55" max="125" parameter_name="Dallas Temperature 4 Low level" />
+      <input type="number" parameter_id="50344" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature 4 Event only" />
+      <input type="number" parameter_id="50345" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature 4 Average" />
+      <input type="number" parameter_id="50350" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature ID 1 Priority" />
+      <input type="number" parameter_id="50351" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature ID 1 Operand" />
+      <input type="number" parameter_id="50352" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 1 High level" />
+      <input type="number" parameter_id="50353" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 1 Low level" />
+      <input type="number" parameter_id="50354" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature ID 1 Event only" />
+      <input type="number" parameter_id="50355" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature ID 1 Average" />
+      <input type="number" parameter_id="50360" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature ID 2 Priority" />
+      <input type="number" parameter_id="50361" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature ID 2 Operand" />
+      <input type="number" parameter_id="50362" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 2 High level" />
+      <input type="number" parameter_id="50363" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 2 Low level" />
+      <input type="number" parameter_id="50364" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature ID 2 Event only" />
+      <input type="number" parameter_id="50365" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature ID 2 Average" />
+      <input type="number" parameter_id="50370" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature ID 3 Priority" />
+      <input type="number" parameter_id="50371" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature ID 3 Operand" />
+      <input type="number" parameter_id="50372" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 3 High level" />
+      <input type="number" parameter_id="50373" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 3 Low level" />
+      <input type="number" parameter_id="50374" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature ID 3 Event only" />
+      <input type="number" parameter_id="50375" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature ID 3 Average" />
+      <input type="number" parameter_id="50380" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Dallas Temperature ID 4 Priority" />
+      <input type="number" parameter_id="50381" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Dallas Temperature ID 4 Operand" />
+      <input type="number" parameter_id="50382" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 4 High level" />
+      <input type="number" parameter_id="50383" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="Dallas Temperature ID 4 Low level" />
+      <input type="number" parameter_id="50384" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Dallas Temperature ID 4 Event only" />
+      <input type="number" parameter_id="50385" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="Dallas Temperature ID 4 Average" />
+      <input type="number" parameter_id="50390" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="iButton Priority" />
+      <input type="number" parameter_id="50391" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="iButton Operand" />
+      <input type="number" parameter_id="50392" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="iButton High level" />
+      <input type="number" parameter_id="50393" parameter_type="Uint32" default_value="0" min="0" max="999999999" parameter_name="iButton Low level" />
+      <input type="number" parameter_id="50394" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="iButton Event only" />
+      <input type="number" parameter_id="50395" parameter_type="Uint16" default_value="0" min="0" max="65535" parameter_name="iButton Average" />
+      <input type="number" parameter_id="50400" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="RFID Priority" />
+      <input type="number" parameter_id="50401" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="RFID Operand" />
+      <input type="number" parameter_id="50402" parameter_type="Uint8" default_value="0" min="0" max="999999999" parameter_name="RFID High level" />
+      <input type="number" parameter_id="50403" parameter_type="Uint8" default_value="0" min="0" max="999999999" parameter_name="RFID Low level" />
+      <input type="number" parameter_id="50404" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="RFID Event only" />
+      <input type="number" parameter_id="50405" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="RFID Average" />
+      <input type="number" parameter_id="50410" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS1 Fuel Level Priority" />
+      <input type="number" parameter_id="50411" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS1 Fuel Level Operand" />
+      <input type="number" parameter_id="50412" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS1 Fuel Level High level" />
+      <input type="number" parameter_id="50413" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS1 Fuel Level Low level" />
+      <input type="number" parameter_id="50414" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS1 Fuel Level Event only" />
+      <input type="number" parameter_id="50415" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS1 Fuel Level Average" />
+      <input type="number" parameter_id="50420" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS2 Fuel Level Priority" />
+      <input type="number" parameter_id="50421" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS2 Fuel Level Operand" />
+      <input type="number" parameter_id="50422" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS2 Fuel Level High level" />
+      <input type="number" parameter_id="50423" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS2 Fuel Level Low level" />
+      <input type="number" parameter_id="50424" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS2 Fuel Level Event only" />
+      <input type="number" parameter_id="50425" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS2 Fuel Level Average" />
+      <input type="number" parameter_id="50430" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS3 Fuel Level Priority" />
+      <input type="number" parameter_id="50431" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS3 Fuel Level Operand" />
+      <input type="number" parameter_id="50432" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS3 Fuel Level High level" />
+      <input type="number" parameter_id="50433" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS3 Fuel Level Low level" />
+      <input type="number" parameter_id="50434" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS3 Fuel Level Event only" />
+      <input type="number" parameter_id="50435" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS3 Fuel Level Average" />
+      <input type="number" parameter_id="50440" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS4 Fuel Level Priority" />
+      <input type="number" parameter_id="50441" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS4 Fuel Level Operand" />
+      <input type="number" parameter_id="50442" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS4 Fuel Level High level" />
+      <input type="number" parameter_id="50443" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS4 Fuel Level Low level" />
+      <input type="number" parameter_id="50444" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS4 Fuel Level Event only" />
+      <input type="number" parameter_id="50445" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS4 Fuel Level Average" />
+      <input type="number" parameter_id="50450" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS5 Fuel Level Priority" />
+      <input type="number" parameter_id="50451" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS5 Fuel Level Operand" />
+      <input type="number" parameter_id="50452" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS5 Fuel Level High level" />
+      <input type="number" parameter_id="50453" parameter_type="Uint8" default_value="0" min="0" max="65535" parameter_name="LLS5 Fuel Level Low level" />
+      <input type="number" parameter_id="50454" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS5 Fuel Level Event only" />
+      <input type="number" parameter_id="50455" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS5 Fuel Level Average" />
+      <input type="number" parameter_id="50460" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS1 Temperature Priority" />
+      <input type="number" parameter_id="50461" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS1 Temperature Operand" />
+      <input type="number" parameter_id="50462" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS1 Temperature High level" />
+      <input type="number" parameter_id="50463" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS1 Temperature Low level" />
+      <input type="number" parameter_id="50464" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS1 Temperature Event only" />
+      <input type="number" parameter_id="50465" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS1 Temperature Average" />
+      <input type="number" parameter_id="50470" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS2 Temperature Priority" />
+      <input type="number" parameter_id="50471" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS2 Temperature Operand" />
+      <input type="number" parameter_id="50472" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS2 Temperature High level" />
+      <input type="number" parameter_id="50473" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS2 Temperature Low level" />
+      <input type="number" parameter_id="50474" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS2 Temperature Event only" />
+      <input type="number" parameter_id="50475" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS2 Temperature Average" />
+      <input type="number" parameter_id="50480" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS3 Temperature Priority" />
+      <input type="number" parameter_id="50481" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS3 Temperature Operand" />
+      <input type="number" parameter_id="50482" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS3 Temperature High level" />
+      <input type="number" parameter_id="50483" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS3 Temperature Low level" />
+      <input type="number" parameter_id="50484" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS3 Temperature Event only" />
+      <input type="number" parameter_id="50485" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS3 Temperature Average" />
+      <input type="number" parameter_id="50490" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS4 Temperature Priority" />
+      <input type="number" parameter_id="50491" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS4 Temperature Operand" />
+      <input type="number" parameter_id="50492" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS4 Temperature High level" />
+      <input type="number" parameter_id="50493" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS4 Temperature Low level" />
+      <input type="number" parameter_id="50494" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS4 Temperature Event only" />
+      <input type="number" parameter_id="50495" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS4 Temperature Average" />
+      <input type="number" parameter_id="50500" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="LLS5 Temperature Priority" />
+      <input type="number" parameter_id="50501" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="LLS5 Temperature Operand" />
+      <input type="number" parameter_id="50502" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS5 Temperature High level" />
+      <input type="number" parameter_id="50503" parameter_type="Uint8" default_value="0" min="-128" max="127" parameter_name="LLS5 Temperature Low level" />
+      <input type="number" parameter_id="50504" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="LLS5 Temperature Event only" />
+      <input type="number" parameter_id="50505" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="LLS5 Temperature Average" />
+      <input type="number" parameter_id="50510" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Eco Score Priority" />
+      <input type="number" parameter_id="50511" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Eco Score Operand" />
+      <input type="number" parameter_id="50512" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Eco Score High level" />
+      <input type="number" parameter_id="50513" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Eco Score Low level" />
+      <input type="number" parameter_id="50514" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Eco Score Event only" />
+      <input type="number" parameter_id="50690" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Battery level % Priority" />
+      <input type="number" parameter_id="50691" parameter_type="Uint8" default_value="0" min="0" max="6" parameter_name="Battery level % Operand" />
+      <input type="number" parameter_id="50692" parameter_type="Uint8" default_value="0" min="0" max="100" parameter_name="Battery level % High level" />
+      <input type="number" parameter_id="50693" parameter_type="Uint8" default_value="0" min="0" max="100" parameter_name="Battery level % Low level" />
+      <input type="number" parameter_id="50694" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Battery level % Event only" />
+      <input type="number" parameter_id="50695" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="Battery level % Average" />
+      <input type="number" parameter_id="50720" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="BT Status Priority" />
+      <input type="number" parameter_id="50721" parameter_type="Uint8" default_value="5" min="0" max="6" parameter_name="BT Status Operand" />
+      <input type="number" parameter_id="50722" parameter_type="Uint8" default_value="0" min="0" max="4" parameter_name="BT Status High level" />
+      <input type="number" parameter_id="50723" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="BT Status Low level" />
+      <input type="number" parameter_id="50724" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="BT Status Event only" />
+      <input type="number" parameter_id="50725" parameter_type="Uint16" default_value="1" min="0" max="65535" parameter_name="BT Status Average" />
+      <input type="number" parameter_id="51730" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="ISO6709 Coordinates Priority" />
+      <input type="number" parameter_id="51731" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="ISO6709 Coordinates Operand" />
+      <input type="number" parameter_id="51734" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="ISO6709 Coordinates Event only" />
+    </div>
+  </div>
+  <div type="maintable" title="Parameters">
+    <div type="subtable">
+    </div>
+  </div>
+  <div type="maintable" title="OBD II (Bluetooth)">
+    <div type="subtable">
+      <input type="number" parameter_id="7038" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="number" parameter_id="8038" parameter_type="String" default_value="&quot;Number of DTC&quot;" min="0" max="160" parameter_name="SMS text" value="Text" />
+      <input type="select" options="0:Disabled,1:Low,2:High,3:Panic" parameter_id="40100" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Priority" />
+      <input type="select" options="0:On range exit,1:On range entrance,2:On both,3:Monitoring,4:Hysteresis,5:On change,6:On delta change" parameter_id="40101" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Operand" />
+      <input type="number" parameter_id="40102" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="High level" value="High value" />
+      <input type="number" parameter_id="40103" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="Low level" value="Low value" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="40104" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Event only" />
+    </div>
+    <div type="subtable">
+    </div>
+  </div>
+  <div type="maintable" title="LVCAN">
+    <div type="subtable">
+      <input type="select" options="0:Auto detect,1:LV-CAN200,2:ALL-CAN300" parameter_id="45000" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="LVCAN Mode" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="45001" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Send data with 0, if ignition is off" />
+      <input type="number" parameter_id="45002" parameter_type="Uint16" default_value="0" min="0" max="999" parameter_name="Program number" value="Value" />
+    </div>
+    <div type="subtable">
+      <input type="number" parameter_id="7141" parameter_type="Uint8" default_value="0" min="0" max="10" parameter_name="Send SMS to" value="Phone number" />
+      <input type="select" options="0:Disabled,1:Low,2:High,3:Panic" parameter_id="45100" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Priority" />
+      <input type="select" options="0:On range exit,1:On range entrance,2:On both,3:Monitoring,4:Hysteresis,5:On change,6:On delta change" parameter_id="45101" parameter_type="Uint8" default_value="3" min="0" max="6" parameter_name="Operand" />
+      <input type="number" parameter_id="45102" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="High level" value="High value" />
+      <input type="number" parameter_id="45103" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="Low level" value="Low value" />
+      <input type="select" options="0:Disable,1:Enable" parameter_id="45104" parameter_type="Uint8" default_value="0" min="0" max="1" parameter_name="Event only" />
+      <input type="number" parameter_id="45105" parameter_type="Uint16" default_value="10" min="0" max="65535" parameter_name="Averaging constant" value="Value" />
+      <input type="number" parameter_id="81411" parameter_type="String" default_value="&quot;LVC Vehicle speed&quot;" min="0" max="160" parameter_name="SMS text" value="Text" />
+    </div>
+    <div type="subtable">
+    </div>
+  </div>
+  <div type="maintable" title="RS232/RS485">
+    <div type="subtable">
+      <input type="select" options="0:Disable,1:RS232,2:RS485" parameter_id="150" parameter_type="Uint8" default_value="0" min="0" max="2" parameter_name="External UART mode" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode,Mode" parameter_id="151" parameter_type="Uint8" default_value="0" min="0" max="15" />
+      <input type="select" options="0:Default,1:1200,2:2400,3:9600,4:14400,5:19200,6:38400,7:57600,8:115200" parameter_id="152" parameter_type="Uint8" default_value="Depends on selected Mode" min="0" max="8" parameter_name="Baudrate" />
+      <input type="select" options="0:Default,1:None,2:Odd,3:Even" parameter_id="153" parameter_type="Uint8" default_value="Depends on selected Mode" min="0" max="3" parameter_name="Parity" />
+    </div>
+    <div type="subtable">
+      <input type="number" parameter_id="154" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="Prefix 1" value="Number" />
+      <input type="number" parameter_id="155" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="Prefix 2" value="Number" />
+      <input type="number" parameter_id="156" parameter_type="Uint8" default_value="0" min="0" max="255" parameter_name="Prefix 3" value="Number" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:No filter,1:Ping filter,2:Unicode filter,3:Ping and Unicode filters" parameter_id="157" parameter_type="Uint8" default_value="0" min="0" max="3" parameter_name="Garmin Features" />
+    </div>
+    <div type="subtable">
+      <input type="select" options="0:Log Mode,1:NMEA,2:LLS,3:TCP ASCII,4:TCP Binary" parameter_id="160" parameter_type="Uint8" default_value="3" min="0" max="4" parameter_name="Mode" />
+      <input type="select" options="0:Default,1:1200,2:2400,3:9600,4:14400,5:19200,6:38400,7:57600,8:115200" parameter_id="161" parameter_type="Uint8" default_value="Depends on selected Mode" min="0" max="8" parameter_name="Baudrate" />
+    </div>
+    <div type="subtable">
+      <input type="number" parameter_id="162" parameter_type="Uint8" default_value="0" min="0" max="254" parameter_name="LLS 1 Address" value="Number" />
+      <input type="number" parameter_id="163" parameter_type="Uint8" default_value="0" min="0" max="254" parameter_name="LLS 2 Address" value="Number" />
+      <input type="number" parameter_id="164" parameter_type="Uint8" default_value="0" min="0" max="254" parameter_name="LLS 3 Address" value="Number" />
+      <input type="number" parameter_id="165" parameter_type="Uint8" default_value="0" min="0" max="254" parameter_name="LLS 4 Address" value="Number" />
+      <input type="number" parameter_id="166" parameter_type="Uint8" default_value="0" min="0" max="254" parameter_name="LLS 5 Address" value="Number" />
+    </div>
+    <div type="subtable">
+    </div>
+  </div>
+</div>
+
